@@ -52,7 +52,7 @@
             background: rgba(255,255,255,0.3);
         }
 
-        . planner-layout {
+        .planner-layout {
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -68,7 +68,7 @@
         }
 
         .weekly-calendar h2 {
-            color:  #667eea;
+            color: #667eea;
             margin-bottom: 20px;
             text-align: center;
         }
@@ -125,25 +125,31 @@
             background: #667eea;
             color: white;
             padding: 2px 8px;
-            border-radius: 10px;
+            border-radius:  10px;
             font-size:  0.75em;
         }
 
-        .day-meal {
-            background: white;
-            border-radius: 8px;
+        . day-meal {
+            background:  white;
+            border-radius:  8px;
             padding: 10px;
             margin-bottom:  8px;
-            cursor: grab;
+            cursor: pointer;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             border-left: 4px solid #667eea;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .day-meal:hover {
+        . day-meal:hover {
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transform: translateX(3px);
         }
 
-        .day-meal:active {
+        . day-meal[draggable="true"] {
+            cursor: grab;
+        }
+
+        .day-meal: active {
             cursor: grabbing;
         }
 
@@ -173,13 +179,13 @@
             transition: background 0.2s;
         }
 
-        . day-meal-remove:hover {
+        .day-meal-remove:hover {
             background: #ff5252;
         }
 
         /* I LIKE SECTION - BELOW DAYS */
         .i-like-section {
-            background:  white;
+            background: white;
             border-radius: 15px;
             padding: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -214,7 +220,7 @@
             }
         }
 
-        . meal-card {
+        .meal-card {
             background: #f8f9fa;
             border-radius: 10px;
             padding: 10px;
@@ -227,10 +233,10 @@
 
         .meal-card:hover {
             transform: translateY(-2px);
-            box-shadow:  0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .meal-card:active {
+        .meal-card: active {
             cursor: grabbing;
         }
 
@@ -243,7 +249,7 @@
             width: 100%;
             height: 120px;
             border-radius: 8px;
-            object-fit: cover;
+            object-fit:  cover;
             margin-bottom: 10px;
         }
 
@@ -282,7 +288,124 @@
             background: #ff5252;
         }
 
-        . loading {
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height:  100%;
+            background: rgba(0, 0, 0, 0.7);
+            overflow-y: auto;
+        }
+
+        .modal. show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y:  auto;
+            box-shadow:  0 10px 50px rgba(0,0,0,0.5);
+            animation: slideDown 0.3s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 1.8em;
+            color: #667eea;
+            margin:  0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 2em;
+            cursor: pointer;
+            color: #999;
+            line-height: 1;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        . modal-source {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-size:  0.9em;
+            margin-bottom: 15px;
+        }
+
+        .modal-description {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .modal-section {
+            margin-bottom: 25px;
+        }
+
+        . modal-section h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size:  1.3em;
+        }
+
+        . modal-section p {
+            color: #555;
+            line-height: 1.8;
+            white-space: pre-wrap;
+        }
+
+        .loading {
             text-align: center;
             color: white;
             font-size: 1.2em;
@@ -300,13 +423,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
+            0% { transform:  rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
 
         . empty-state {
             text-align: center;
-            color:  #999;
+            color: #999;
             padding: 30px;
             font-style: italic;
             grid-column: 1 / -1;
@@ -330,7 +453,7 @@
         }
 
         .config-prompt h2 {
-            color:  #667eea;
+            color: #667eea;
             margin-bottom: 20px;
         }
 
@@ -461,7 +584,7 @@
                 </h2>
                 <div id="iLikeBox">
                     <div class="empty-state">
-                        No meals yet! Add meals from the spinner or meal database.
+                        No meals yet!  Add meals from the spinner or meal database.
                     </div>
                 </div>
             </div>
@@ -469,9 +592,33 @@
         </div>
     </div>
 
+    <!-- RECIPE MODAL -->
+    <div id="recipeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img id="modalImage" class="modal-image" style="display:  none;">
+                <span class="modal-source" id="modalSource"></span>
+                <p class="modal-description" id="modalDescription"></p>
+                <div class="modal-section">
+                    <h3>📋 Ingredients</h3>
+                    <p id="modalIngredients"></p>
+                </div>
+                <div class="modal-section">
+                    <h3>👨‍🍳 Instructions</h3>
+                    <p id="modalInstructions"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         let WEB_APP_URL = localStorage.getItem('webAppUrl') || '';
         let plannerData = [];
+        let allMealsData = [];
         let draggedMealId = null;
         let draggedFromDay = null;
 
@@ -484,6 +631,7 @@
                 document.getElementById('configSection').style.display = 'block';
             } else {
                 loadPlanner();
+                loadAllMeals();
             }
         };
 
@@ -495,14 +643,28 @@
                 document.getElementById('configSection').style.display = 'none';
                 document.getElementById('loadingSection').style.display = 'block';
                 loadPlanner();
+                loadAllMeals();
             } else {
                 alert('Please enter a valid URL');
             }
         }
 
+        async function loadAllMeals() {
+            try {
+                const response = await fetch(WEB_APP_URL + '?action=getMeals');
+                const data = await response.json();
+                if (data.meals) {
+                    allMealsData = data.meals;
+                    console.log('All meals loaded:', allMealsData. length);
+                }
+            } catch (error) {
+                console.error('Failed to load all meals:', error);
+            }
+        }
+
         async function loadPlanner() {
             try {
-                const response = await fetch(WEB_APP_URL + '?action=getPlanner');
+                const response = await fetch(WEB_APP_URL + '? action=getPlanner');
                 const data = await response.json();
                 
                 console.log('Planner data loaded:', data);
@@ -511,14 +673,14 @@
                     plannerData = data.planner;
                     
                     document.getElementById('loadingSection').style.display = 'none';
-                    document.getElementById('mainSection').style.display = 'flex';
+                    document. getElementById('mainSection').style.display = 'flex';
                     
                     renderPlanner();
                 } else {
                     showError('Failed to load planner:  ' + data.message);
                 }
             } catch (error) {
-                showError('Failed to load planner: ' + error.message);
+                showError('Failed to load planner:  ' + error.message);
             }
         }
 
@@ -585,7 +747,7 @@
                     dayContainer.innerHTML = '<div class="empty-state" style="font-size: 0.85em; padding: 20px;">Drag meals here</div>';
                 } else {
                     dayContainer. innerHTML = dayMeals.map(meal => `
-                        <div class="day-meal" draggable="true" data-meal-id="${meal.mealId}" data-from-day="${day}">
+                        <div class="day-meal" draggable="true" data-meal-id="${meal.mealId}" data-from-day="${day}" onclick="showRecipe(${meal.mealId})">
                             <div class="day-meal-name">${meal.mealName}</div>
                             <div class="day-meal-source">${meal.source}</div>
                             <button class="day-meal-remove" onclick="event.stopPropagation(); removeMealFromDay(${meal.mealId}, '${day}')">
@@ -612,6 +774,43 @@
             });
         }
 
+        // Show recipe in modal
+        function showRecipe(mealId) {
+            const meal = allMealsData. find(m => m.id == mealId);
+            if (!meal) {
+                alert('Recipe not found! ');
+                return;
+            }
+
+            document.getElementById('modalTitle').textContent = meal.name;
+            document.getElementById('modalSource').textContent = meal.source;
+            document.getElementById('modalDescription').textContent = meal.description || 'No description available';
+            document.getElementById('modalIngredients').textContent = meal.ingredients || 'No ingredients listed';
+            document.getElementById('modalInstructions').textContent = meal.instructions || 'No instructions provided';
+
+            const modalImage = document.getElementById('modalImage');
+            if (meal.imageUrl) {
+                modalImage.src = meal. imageUrl;
+                modalImage. style.display = 'block';
+            } else {
+                modalImage.style.display = 'none';
+            }
+
+            document.getElementById('recipeModal').classList.add('show');
+        }
+
+        function closeModal() {
+            document. getElementById('recipeModal').classList.remove('show');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('recipeModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
         // Prepare drag - set mealId before drag starts
         function prepareDrag(mealId) {
             draggedMealId = mealId;
@@ -621,7 +820,6 @@
 
         // Drag and Drop functions
         function dragStart(event) {
-            // Get mealId from the element
             const mealId = event.currentTarget.getAttribute('data-meal-id');
             draggedMealId = mealId;
             draggedFromDay = null;
@@ -629,34 +827,32 @@
             event.currentTarget.classList.add('dragging');
             console.log('Dragging meal from I Like:', draggedMealId);
             
-            // Set drag data
             event.dataTransfer.effectAllowed = 'move';
             event.dataTransfer.setData('text/plain', mealId);
         }
 
         function dragStartFromDay(event) {
-            const mealId = event.currentTarget. getAttribute('data-meal-id');
+            const mealId = event.currentTarget.getAttribute('data-meal-id');
             const fromDay = event.currentTarget. getAttribute('data-from-day');
             
             draggedMealId = mealId;
             draggedFromDay = fromDay;
             
-            event.currentTarget.classList.add('dragging');
+            event.currentTarget.classList. add('dragging');
             console.log('Dragging meal from day:', draggedMealId, draggedFromDay);
             
-            event.dataTransfer.effectAllowed = 'move';
-            event.dataTransfer.setData('text/plain', mealId);
+            event.dataTransfer. effectAllowed = 'move';
+            event.dataTransfer. setData('text/plain', mealId);
         }
 
         function dragEnd(event) {
-            event. currentTarget.classList.remove('dragging');
+            event.currentTarget.classList. remove('dragging');
         }
 
         function allowDrop(event) {
             event.preventDefault();
             event.dataTransfer.dropEffect = 'move';
             
-            // Add visual feedback
             const daySlot = event.currentTarget;
             if (daySlot.classList.contains('day-slot')) {
                 daySlot.classList.add('drag-over');
@@ -673,7 +869,6 @@
         async function drop(event) {
             event. preventDefault();
             
-            // Remove visual feedback
             const daySlot = event.currentTarget;
             if (daySlot.classList.contains('day-slot')) {
                 daySlot.classList.remove('drag-over');
@@ -688,13 +883,11 @@
                 return;
             }
 
-            // If dragging from another day, remove from that day first
             if (draggedFromDay) {
                 console.log('Removing from previous day:', draggedFromDay);
                 await removeMealFromDayAPI(draggedMealId, draggedFromDay);
             }
 
-            // Assign to new day
             console.log('Assigning to new day:', day);
             const result = await assignMealToDayAPI(draggedMealId, day);
             
@@ -702,14 +895,14 @@
                 console.log('Successfully assigned! ');
                 await loadPlanner();
             } else {
-                alert('Failed to assign meal:  ' + result.message);
+                alert('Failed to assign meal: ' + result.message);
             }
 
             draggedMealId = null;
             draggedFromDay = null;
         }
 
-        // API calls - NO SPACES AFTER ? 
+        // API calls
         async function assignMealToDayAPI(mealId, day) {
             try {
                 console.log('API call:  assignMealToDay', mealId, day);
@@ -735,7 +928,7 @@
             
             const result = await removeMealFromDayAPI(mealId, day);
             
-            if (result. success) {
+            if (result.success) {
                 await loadPlanner();
             } else {
                 alert('Failed to remove meal: ' + result.message);
