@@ -32,7 +32,7 @@
         h1 {
             font-size: 3em;
             margin-bottom:  10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow:  2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .back-btn {
@@ -43,7 +43,7 @@
             color: white;
             padding: 10px 20px;
             border-radius: 8px;
-            text-decoration:  none;
+            text-decoration: none;
             font-weight: 600;
             transition: background 0.3s;
         }
@@ -122,16 +122,16 @@
             background: #667eea;
             color: white;
             padding: 2px 8px;
-            border-radius:  10px;
+            border-radius: 10px;
             font-size:  0.75em;
         }
 
-        . day-meal {
+        .day-meal {
             background: white;
             border-radius: 8px;
             padding: 10px;
             margin-bottom:  8px;
-            box-shadow:  0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             border-left: 4px solid #667eea;
             transition: transform 0.2s, box-shadow 0.2s;
         }
@@ -177,7 +177,7 @@
             color:  white;
             border: none;
             border-radius: 5px;
-            font-size:  0.75em;
+            font-size: 0.75em;
             cursor: pointer;
             transition: background 0.2s;
         }
@@ -370,7 +370,7 @@
             width: 100%;
             max-height: 300px;
             object-fit:  cover;
-            border-radius: 10px;
+            border-radius:  10px;
             margin-bottom: 20px;
         }
 
@@ -384,7 +384,7 @@
             margin-bottom: 15px;
         }
 
-        . modal-description {
+        .modal-description {
             color: #666;
             font-style: italic;
             margin-bottom: 20px;
@@ -398,10 +398,10 @@
         . modal-section h3 {
             color: #667eea;
             margin-bottom: 10px;
-            font-size: 1.3em;
+            font-size:  1.3em;
         }
 
-        .modal-section p {
+        . modal-section p {
             color: #555;
             line-height: 1.8;
             white-space: pre-wrap;
@@ -414,7 +414,7 @@
             padding: 40px;
         }
 
-        . spinner-loading {
+        .spinner-loading {
             border: 4px solid rgba(255,255,255,0.3);
             border-top: 4px solid white;
             border-radius: 50%;
@@ -425,7 +425,7 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
+            0% { transform:  rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
 
@@ -464,7 +464,7 @@
             max-width: 500px;
             padding: 12px;
             border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            border-radius:  8px;
             font-size: 1em;
             margin:  10px 0;
         }
@@ -683,7 +683,7 @@
                     
                     renderPlanner();
                 } else {
-                    showError('Failed to load planner: ' + data.message);
+                    showError('Failed to load planner:  ' + data.message);
                 }
             } catch (error) {
                 showError('Failed to load planner:  ' + error.message);
@@ -807,7 +807,7 @@
             console.log('Found meal:', meal);
             
             if (! meal) {
-                alert('Recipe not found!  MealId: ' + mealId + ', Total meals: ' + allMealsData.length);
+                alert('Recipe not found! MealId: ' + mealId + ', Total meals: ' + allMealsData.length);
                 return;
             }
 
@@ -834,7 +834,7 @@
 
         window.onclick = function(event) {
             const modal = document.getElementById('recipeModal');
-            if (event.target === modal) {
+            if (event. target === modal) {
                 closeModal();
             }
         }
@@ -849,7 +849,7 @@
 
         function dragStart(event) {
             isDragging = true;
-            const mealId = event.currentTarget. getAttribute('data-meal-id');
+            const mealId = event.currentTarget.getAttribute('data-meal-id');
             draggedMealId = mealId;
             draggedFromDay = null;
             
@@ -863,12 +863,12 @@
         function dragStartFromDay(event) {
             isDragging = true;
             const mealId = event.currentTarget.getAttribute('data-meal-id');
-            const fromDay = event.currentTarget.getAttribute('data-from-day');
+            const fromDay = event.currentTarget. getAttribute('data-from-day');
             
             draggedMealId = mealId;
             draggedFromDay = fromDay;
             
-            event.currentTarget.classList.add('dragging');
+            event.currentTarget.classList. add('dragging');
             console.log('Dragging meal from day:', draggedMealId, draggedFromDay);
             
             event.dataTransfer. effectAllowed = 'move';
@@ -928,7 +928,7 @@
                 console.log('Successfully assigned! ');
                 await loadData();
             } else {
-                alert('Failed to assign meal: ' + result.message);
+                alert('Failed to assign meal:  ' + result.message);
             }
 
             draggedMealId = null;
@@ -960,7 +960,7 @@
             
             const result = await removeMealFromDayAPI(mealId, day);
             
-            if (result. success) {
+            if (result.success) {
                 await loadData();
             } else {
                 alert('Failed to remove meal: ' + result.message);
