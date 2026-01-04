@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<! DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,7 +31,7 @@
 
         h1 {
             font-size: 3em;
-            margin-bottom:  10px;
+            margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
@@ -52,7 +52,7 @@
             background: rgba(255,255,255,0.3);
         }
 
-        .planner-layout {
+        . planner-layout {
             display: block;
         }
 
@@ -60,12 +60,12 @@
             background: white;
             border-radius: 15px;
             padding: 20px;
-            box-shadow:  0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             margin-bottom: 20px;
         }
 
         . weekly-calendar h2 {
-            color:  #667eea;
+            color: #667eea;
             margin-bottom: 20px;
             text-align: center;
         }
@@ -131,7 +131,6 @@
             border-radius: 8px;
             padding: 10px;
             margin-bottom:  8px;
-            cursor: pointer;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             border-left: 4px solid #667eea;
             transition: transform 0.2s, box-shadow 0.2s;
@@ -146,7 +145,7 @@
             cursor: grab;
         }
 
-        .day-meal: active {
+        .day-meal:active {
             cursor: grabbing;
         }
 
@@ -155,6 +154,13 @@
             color: #333;
             font-size: 0.9em;
             margin-bottom: 5px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .day-meal-name:hover {
+            color: #667eea;
+            text-decoration: underline;
         }
 
         .day-meal-source {
@@ -222,7 +228,7 @@
             padding: 10px;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
-            border:  2px solid transparent;
+            border: 2px solid transparent;
             display: flex;
             flex-direction: column;
             position: relative;
@@ -230,7 +236,7 @@
 
         .meal-card:hover {
             transform: translateY(-2px);
-            box-shadow:  0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         .meal-card. dragging {
@@ -257,12 +263,12 @@
             min-height: 35px;
         }
 
-        . meal-card-source {
-            font-size: 0.7em;
+        .meal-card-source {
+            font-size:  0.7em;
             color: #666;
             background: #e0e0e0;
             padding: 2px 6px;
-            border-radius:  8px;
+            border-radius: 8px;
             display: inline-block;
             margin-bottom: 8px;
         }
@@ -337,7 +343,7 @@
         .modal-title {
             font-size: 1.8em;
             color: #667eea;
-            margin: 0;
+            margin:  0;
         }
 
         .modal-close {
@@ -378,7 +384,7 @@
             margin-bottom: 15px;
         }
 
-        . modal-description {
+        .modal-description {
             color: #666;
             font-style: italic;
             margin-bottom: 20px;
@@ -458,7 +464,7 @@
             max-width: 500px;
             padding: 12px;
             border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            border-radius:  8px;
             font-size: 1em;
             margin:  10px 0;
         }
@@ -502,7 +508,7 @@
         <div id="configSection" class="config-prompt" style="display: none;">
             <h2>⚙️ Configuration Required</h2>
             <p>Please enter your Google Apps Script Web App URL:</p>
-            <input type="text" id="webAppUrlInput" class="config-input" placeholder="https://script.google.com/macros/s/...">
+            <input type="text" id="webAppUrlInput" class="config-input" placeholder="https://script.google.com/macros/s/... ">
             <button class="btn-primary" onclick="saveConfigAndLoad()">Save & Load Planner</button>
         </div>
 
@@ -657,7 +663,7 @@
 
         async function loadPlanner() {
             try {
-                const response = await fetch(WEB_APP_URL + '?action=getPlanner');
+                const response = await fetch(WEB_APP_URL + '? action=getPlanner');
                 const data = await response.json();
                 
                 console.log('Planner data loaded:', data);
@@ -736,9 +742,9 @@
                 if (dayMeals.length === 0) {
                     dayContainer.innerHTML = '<div class="empty-state" style="font-size: 0.85em; padding: 20px;">Drag meals here</div>';
                 } else {
-                    dayContainer.innerHTML = dayMeals.map(meal => `
-                        <div class="day-meal" draggable="true" data-meal-id="${meal.mealId}" data-from-day="${day}" onclick="showRecipe(${meal.mealId})">
-                            <div class="day-meal-name">${meal.mealName}</div>
+                    dayContainer. innerHTML = dayMeals.map(meal => `
+                        <div class="day-meal" draggable="true" data-meal-id="${meal.mealId}" data-from-day="${day}">
+                            <div class="day-meal-name" onclick="event.stopPropagation(); showRecipe(${meal.mealId})">${meal.mealName}</div>
                             <div class="day-meal-source">${meal.source}</div>
                             <button class="day-meal-remove" onclick="event.stopPropagation(); removeMealFromDay(${meal.mealId}, '${day}')">
                                 ← Back to I Like
@@ -798,7 +804,7 @@
 
         window.onclick = function(event) {
             const modal = document.getElementById('recipeModal');
-            if (event.target === modal) {
+            if (event. target === modal) {
                 closeModal();
             }
         }
@@ -832,11 +838,11 @@
             draggedMealId = mealId;
             draggedFromDay = fromDay;
             
-            event.currentTarget.classList. add('dragging');
+            event.currentTarget.classList.add('dragging');
             console.log('Dragging meal from day:', draggedMealId, draggedFromDay);
             
-            event.dataTransfer. effectAllowed = 'move';
-            event.dataTransfer. setData('text/plain', mealId);
+            event.dataTransfer.effectAllowed = 'move';
+            event.dataTransfer.setData('text/plain', mealId);
         }
 
         function dragEnd(event) {
@@ -859,7 +865,7 @@
         function dragLeave(event) {
             const daySlot = event.currentTarget;
             if (daySlot.classList.contains('day-slot')) {
-                daySlot.classList.remove('drag-over');
+                daySlot. classList.remove('drag-over');
             }
         }
 
@@ -924,7 +930,7 @@
             
             const result = await removeMealFromDayAPI(mealId, day);
             
-            if (result. success) {
+            if (result.success) {
                 await loadPlanner();
             } else {
                 alert('Failed to remove meal: ' + result.message);
