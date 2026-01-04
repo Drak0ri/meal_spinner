@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background:   linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background:  linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -52,7 +52,7 @@
             background: rgba(255,255,255,0.3);
         }
 
-        .  planner-layout {
+        . planner-layout {
             display: block;
         }
 
@@ -64,13 +64,13 @@
             margin-bottom: 20px;
         }
 
-        .  weekly-calendar h2 {
+        . weekly-calendar h2 {
             color: #667eea;
             margin-bottom: 20px;
-            text-align:  center;
+            text-align: center;
         }
 
-        . days-grid {
+        .days-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 15px;
@@ -84,13 +84,13 @@
 
         @media (max-width: 768px) {
             .days-grid {
-                grid-template-columns:   repeat(2, 1fr);
+                grid-template-columns:  repeat(2, 1fr);
             }
         }
 
         @media (max-width: 500px) {
             .days-grid {
-                grid-template-columns:  1fr;
+                grid-template-columns: 1fr;
             }
         }
 
@@ -103,8 +103,8 @@
             transition: background 0.3s, border-color 0.3s;
         }
 
-        .day-slot.  drag-over {
-            background:   #e8f5e9;
+        .day-slot. drag-over {
+            background:  #e8f5e9;
             border-color: #4caf50;
         }
 
@@ -122,16 +122,16 @@
             background: #667eea;
             color: white;
             padding: 2px 8px;
-            border-radius:   10px;
-            font-size:   0.75em;
+            border-radius:  10px;
+            font-size:  0.75em;
         }
 
         .day-meal {
             background: white;
             border-radius: 8px;
             padding: 10px;
-            margin-bottom:   8px;
-            box-shadow:  0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom:  8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             border-left: 4px solid #667eea;
             transition: transform 0.2s, box-shadow 0.2s;
         }
@@ -141,11 +141,11 @@
             transform: translateX(3px);
         }
 
-        .  day-meal[draggable="true"] {
+        . day-meal[draggable="true"] {
             cursor: grab;
         }
 
-        . day-meal: active {
+        .day-meal: active {
             cursor: grabbing;
         }
 
@@ -169,12 +169,12 @@
             margin-bottom: 8px;
         }
 
-        .  day-meal-remove {
+        . day-meal-remove {
             display: inline-block;
             width: 100%;
             padding: 6px 8px;
             background: #ff6b6b;
-            color:   white;
+            color:  white;
             border: none;
             border-radius: 5px;
             font-size: 0.75em;
@@ -182,20 +182,20 @@
             transition: background 0.2s;
         }
 
-        . day-meal-remove:hover {
+        .day-meal-remove:hover {
             background: #ff5252;
         }
 
-        .  i-like-section {
+        . i-like-section {
             background: white;
             border-radius: 15px;
             padding: 20px;
-            box-shadow:   0 10px 30px rgba(0,0,0,0.2);
+            box-shadow:  0 10px 30px rgba(0,0,0,0.2);
         }
 
-        . i-like-section h2 {
+        .i-like-section h2 {
             color: #667eea;
-            margin-bottom:  15px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -205,9 +205,9 @@
         .i-like-count {
             background: #667eea;
             color: white;
-            padding: 3px 10px;
-            border-radius:   15px;
-            font-size:   0.8em;
+            padding:  3px 10px;
+            border-radius: 15px;
+            font-size:  0.8em;
         }
 
         #iLikeBox {
@@ -239,7 +239,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .meal-card.  dragging {
+        .meal-card. dragging {
             opacity: 0.5;
             transform: rotate(3deg);
             cursor: grabbing;
@@ -249,8 +249,8 @@
             width: 100%;
             height: 120px;
             border-radius: 8px;
-            object-fit:   cover;
-            margin-bottom:   10px;
+            object-fit: cover;
+            margin-bottom: 10px;
             pointer-events: none;
         }
 
@@ -273,9 +273,9 @@
             margin-bottom: 8px;
         }
 
-        .  meal-card-btn {
+        . meal-card-btn {
             width: 100%;
-            padding:   6px 10px;
+            padding:  6px 10px;
             border: none;
             border-radius: 5px;
             font-size: 0.75em;
@@ -298,12 +298,12 @@
             left: 0;
             top: 0;
             width: 100%;
-            height:   100%;
+            height:  100%;
             background: rgba(0, 0, 0, 0.7);
             overflow-y: auto;
         }
 
-        .modal.  show {
+        .modal. show {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -324,7 +324,7 @@
         @keyframes slideDown {
             from {
                 opacity: 0;
-                transform:   translateY(-50px);
+                transform:  translateY(-50px);
             }
             to {
                 opacity: 1;
@@ -343,13 +343,13 @@
         .modal-title {
             font-size: 1.8em;
             color: #667eea;
-            margin:   0;
+            margin: 0;
         }
 
         .modal-close {
             background: none;
-            border: none;
-            font-size: 2em;
+            border:  none;
+            font-size:  2em;
             cursor: pointer;
             color: #999;
             line-height: 1;
@@ -369,22 +369,22 @@
         .modal-image {
             width: 100%;
             max-height: 300px;
-            object-fit:   cover;
-            border-radius:   10px;
-            margin-bottom:  20px;
+            object-fit:  cover;
+            border-radius:  10px;
+            margin-bottom: 20px;
         }
 
-        .  modal-source {
+        .modal-source {
             display: inline-block;
             padding: 5px 15px;
             background: #667eea;
             color: white;
             border-radius: 20px;
-            font-size:   0.9em;
-            margin-bottom:  15px;
+            font-size:  0.9em;
+            margin-bottom: 15px;
         }
 
-        .modal-description {
+        . modal-description {
             color: #666;
             font-style: italic;
             margin-bottom: 20px;
@@ -395,13 +395,13 @@
             margin-bottom: 25px;
         }
 
-        .  modal-section h3 {
+        . modal-section h3 {
             color: #667eea;
             margin-bottom: 10px;
-            font-size:   1.3em;
+            font-size:  1.3em;
         }
 
-        .  modal-section p {
+        . modal-section p {
             color: #555;
             line-height: 1.8;
             white-space: pre-wrap;
@@ -414,7 +414,7 @@
             padding: 40px;
         }
 
-        .  spinner-loading {
+        . spinner-loading {
             border: 4px solid rgba(255,255,255,0.3);
             border-top: 4px solid white;
             border-radius: 50%;
@@ -437,13 +437,13 @@
             grid-column: 1 / -1;
         }
 
-        .  error-message {
+        . error-message {
             background: #f8d7da;
             color: #721c24;
             padding: 20px;
-            border-radius:   10px;
+            border-radius:  10px;
             text-align: center;
-            margin:   20px 0;
+            margin:  20px 0;
         }
 
         .config-prompt {
@@ -464,9 +464,9 @@
             max-width: 500px;
             padding: 12px;
             border: 2px solid #e0e0e0;
-            border-radius:   8px;
-            font-size:  1em;
-            margin:   10px 0;
+            border-radius:  8px;
+            font-size: 1em;
+            margin:  10px 0;
         }
 
         .config-input:focus {
@@ -483,7 +483,7 @@
             font-size: 1em;
             font-weight: 600;
             cursor: pointer;
-            transition:   opacity 0.3s;
+            transition:  opacity 0.3s;
         }
 
         .btn-primary:hover {
@@ -497,7 +497,7 @@
     <div class="container">
         <header>
             <h1>📅 Weekly Meal Planner</h1>
-            <p class="subtitle">Plan your week with delicious meals!  </p>
+            <p class="subtitle">Plan your week with delicious meals! </p>
         </header>
 
         <div id="loadingSection" class="loading">
@@ -584,7 +584,7 @@
                 </h2>
                 <div id="iLikeBox">
                     <div class="empty-state">
-                        No meals yet!   Add meals from the spinner or meal database.
+                        No meals yet!  Add meals from the spinner or meal database.
                     </div>
                 </div>
             </div>
@@ -663,7 +663,7 @@
 
         async function loadPlanner() {
             try {
-                const response = await fetch(WEB_APP_URL + '?action=getPlanner');
+                const response = await fetch(WEB_APP_URL + '? action=getPlanner');
                 const data = await response.json();
                 
                 console.log('Planner data loaded:', data);
@@ -713,7 +713,7 @@
             const iLikeBox = document.getElementById('iLikeBox');
             
             if (likedMeals.length === 0) {
-                iLikeBox.innerHTML = '<div class="empty-state">No meals yet!  Add meals from the spinner or meal database.</div>';
+                iLikeBox.innerHTML = '<div class="empty-state">No meals yet! Add meals from the spinner or meal database.</div>';
             } else {
                 iLikeBox.innerHTML = likedMeals.map(meal => `
                     <div class="meal-card" draggable="true" data-meal-id="${meal.mealId}" onclick="handleCardClick(event, ${meal.mealId})">
@@ -733,7 +733,7 @@
                 });
             }
             
-            document.getElementById('iLikeCount').textContent = likedMeals.length;
+            document.getElementById('iLikeCount').textContent = likedMeals. length;
 
             days.forEach(day => {
                 const dayMeals = plannerData.filter(m => m.assignedDay === day && m.status === 'assigned');
@@ -804,7 +804,7 @@
 
         window.onclick = function(event) {
             const modal = document.getElementById('recipeModal');
-            if (event. target === modal) {
+            if (event.target === modal) {
                 closeModal();
             }
         }
@@ -865,12 +865,12 @@
         function dragLeave(event) {
             const daySlot = event.currentTarget;
             if (daySlot.classList.contains('day-slot')) {
-                daySlot. classList.remove('drag-over');
+                daySlot.classList.remove('drag-over');
             }
         }
 
         async function drop(event) {
-            event.preventDefault();
+            event. preventDefault();
             
             const daySlot = event.currentTarget;
             if (daySlot.classList.contains('day-slot')) {
