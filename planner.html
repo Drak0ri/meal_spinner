@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background:   linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background:    linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -31,8 +31,8 @@
 
         h1 {
             font-size: 3em;
-            margin-bottom:   10px;
-            text-shadow:   2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom:    10px;
+            text-shadow:    2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .back-btn {
@@ -43,8 +43,8 @@
             color: white;
             padding: 10px 20px;
             border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
+            text-decoration:  none;
+            font-weight:  600;
             transition: background 0.3s;
         }
 
@@ -52,7 +52,7 @@
             background: rgba(255,255,255,0.3);
         }
 
-        .  planner-layout {
+        .   planner-layout {
             display: grid;
             grid-template-columns: 350px 1fr;
             gap: 20px;
@@ -69,52 +69,52 @@
             background: white;
             border-radius: 15px;
             padding: 20px;
-            box-shadow:   0 10px 30px rgba(0,0,0,0.2);
+            box-shadow:    0 10px 30px rgba(0,0,0,0.2);
             max-height: 800px;
-            overflow-y:   auto;
+            overflow-y:    auto;
         }
 
         .  i-like-section h2 {
             color: #667eea;
-            margin-bottom:  15px;
+            margin-bottom:   15px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        . i-like-count {
+        .  i-like-count {
             background: #667eea;
             color: white;
             padding: 3px 10px;
-            border-radius:   15px;
-            font-size:   0.8em;
+            border-radius:    15px;
+            font-size:    0.8em;
         }
 
-        .  meal-card {
+        .   meal-card {
             background: #f8f9fa;
             border-radius: 10px;
             padding: 15px;
-            margin-bottom:   15px;
+            margin-bottom:    15px;
             cursor: grab;
             transition: transform 0.2s, box-shadow 0.2s;
             border: 2px solid transparent;
         }
 
-        . meal-card:hover {
+        .  meal-card:hover {
             transform: translateY(-2px);
-            box-shadow:   0 5px 15px rgba(0,0,0,0.2);
+            box-shadow:    0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .meal-card: active {
+        .meal-card:  active {
             cursor: grabbing;
         }
 
-        .meal-card.  dragging {
+        .meal-card.   dragging {
             opacity: 0.5;
             transform: rotate(5deg);
         }
 
-        . meal-card-header {
+        .  meal-card-header {
             display: flex;
             gap: 15px;
             margin-bottom: 10px;
@@ -123,17 +123,17 @@
         .meal-card-image {
             width: 60px;
             height: 60px;
-            border-radius:  8px;
-            object-fit: cover;
+            border-radius:   8px;
+            object-fit:  cover;
         }
 
-        .meal-card-info {
+        . meal-card-info {
             flex: 1;
         }
 
         .meal-card-name {
             font-weight: 600;
-            color:   #333;
+            color:    #333;
             margin-bottom: 5px;
             font-size: 1em;
         }
@@ -143,33 +143,33 @@
             color: #666;
             background: #e0e0e0;
             padding: 2px 8px;
-            border-radius:   10px;
+            border-radius:    10px;
             display: inline-block;
         }
 
         .meal-card-actions {
             display: flex;
             gap: 5px;
-            margin-top:   10px;
+            margin-top:    10px;
         }
 
         .meal-card-btn {
-            flex: 1;
-            padding:   6px 10px;
-            border: none;
+            flex:  1;
+            padding:    6px 10px;
+            border:  none;
             border-radius:  5px;
-            font-size: 0.85em;
+            font-size:  0.85em;
             cursor: pointer;
             transition: opacity 0.2s;
         }
 
         .meal-card-btn:hover {
-            opacity:   0.8;
+            opacity:    0.8;
         }
 
         .btn-remove {
             background: #ff6b6b;
-            color:   white;
+            color:    white;
         }
 
         .  weekly-calendar {
@@ -181,7 +181,7 @@
 
         .weekly-calendar h2 {
             color: #667eea;
-            margin-bottom: 20px;
+            margin-bottom:  20px;
         }
 
         .days-grid {
@@ -190,7 +190,7 @@
             gap: 15px;
         }
 
-        .  day-slot {
+        .   day-slot {
             background: #f8f9fa;
             border-radius: 10px;
             padding: 15px;
@@ -199,14 +199,14 @@
             transition: background 0.3s, border-color 0.3s;
         }
 
-        . day-slot.  drag-over {
+        .  day-slot.   drag-over {
             background: #e8f5e9;
             border-color: #4caf50;
         }
 
         .day-slot-header {
             font-weight: 600;
-            color:  #667eea;
+            color:   #667eea;
             margin-bottom: 10px;
             font-size: 1.1em;
             display: flex;
@@ -216,17 +216,17 @@
 
         .day-meal-count {
             background: #667eea;
-            color:   white;
+            color:    white;
             padding: 2px 8px;
-            border-radius:   10px;
+            border-radius:    10px;
             font-size:  0.75em;
         }
 
-        .  day-meal {
+        .   day-meal {
             background: white;
             border-radius: 8px;
             padding: 10px;
-            margin-bottom:   8px;
+            margin-bottom:    8px;
             cursor: grab;
             box-shadow:  0 2px 5px rgba(0,0,0,0.1);
             border-left: 4px solid #667eea;
@@ -253,15 +253,15 @@
             margin-top: 5px;
             padding: 4px 8px;
             background: #ff6b6b;
-            color: white;
-            border:   none;
-            border-radius:   5px;
+            color:  white;
+            border:    none;
+            border-radius:    5px;
             font-size: 0.75em;
             cursor: pointer;
         }
 
         .day-meal-remove:hover {
-            background:   #ff5252;
+            background:    #ff5252;
         }
 
         .loading {
@@ -271,14 +271,14 @@
             padding: 40px;
         }
 
-        .  spinner-loading {
+        .   spinner-loading {
             border: 4px solid rgba(255,255,255,0.3);
             border-top: 4px solid white;
             border-radius: 50%;
             width: 40px;
             height: 40px;
             animation: spin 1s linear infinite;
-            margin:   20px auto;
+            margin:    20px auto;
         }
 
         @keyframes spin {
@@ -297,9 +297,9 @@
             background: #f8d7da;
             color: #721c24;
             padding: 20px;
-            border-radius:   10px;
+            border-radius:    10px;
             text-align: center;
-            margin:   20px 0;
+            margin:    20px 0;
         }
 
         .config-prompt {
@@ -322,7 +322,7 @@
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 1em;
-            margin:   10px 0;
+            margin:    10px 0;
         }
 
         .config-input:focus {
@@ -331,7 +331,7 @@
         }
 
         .btn-primary {
-            padding: 12px 30px;
+            padding:  12px 30px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
@@ -339,11 +339,11 @@
             font-size: 1em;
             font-weight: 600;
             cursor: pointer;
-            transition:   opacity 0.3s;
+            transition:    opacity 0.3s;
         }
 
         .  btn-primary:hover {
-            opacity: 0.9;
+            opacity:  0.9;
         }
     </style>
 </head>
@@ -353,7 +353,7 @@
     <div class="container">
         <header>
             <h1>📅 Weekly Meal Planner</h1>
-            <p class="subtitle">Plan your week with delicious meals!</p>
+            <p class="subtitle">Plan your week with delicious meals! </p>
         </header>
 
         <div id="loadingSection" class="loading">
@@ -364,7 +364,7 @@
         <div id="configSection" class="config-prompt" style="display: none;">
             <h2>⚙️ Configuration Required</h2>
             <p>Please enter your Google Apps Script Web App URL:</p>
-            <input type="text" id="webAppUrlInput" class="config-input" placeholder="https://script.google.com/macros/s/... ">
+            <input type="text" id="webAppUrlInput" class="config-input" placeholder="https://script.google.com/macros/s/...  ">
             <button class="btn-primary" onclick="saveConfigAndLoad()">Save & Load Planner</button>
         </div>
 
@@ -379,7 +379,7 @@
                 </h2>
                 <div id="iLikeBox">
                     <div class="empty-state">
-                        No meals yet!   Add meals from the spinner or meal database.
+                        No meals yet!    Add meals from the spinner or meal database.
                     </div>
                 </div>
             </div>
@@ -458,7 +458,7 @@
 
         // Initialize
         window.onload = function() {
-            if (! WEB_APP_URL) {
+            if (!  WEB_APP_URL) {
                 document.getElementById('loadingSection').style.display = 'none';
                 document.getElementById('configSection').style.display = 'block';
             } else {
@@ -467,7 +467,7 @@
         };
 
         function saveConfigAndLoad() {
-            const url = document.getElementById('webAppUrlInput').value.trim();
+            const url = document.getElementById('webAppUrlInput').value. trim();
             if (url) {
                 localStorage.setItem('webAppUrl', url);
                 WEB_APP_URL = url;
@@ -490,14 +490,14 @@
                     plannerData = data.planner;
                     
                     document.getElementById('loadingSection').style.display = 'none';
-                    document. getElementById('mainSection').style.display = 'grid';
+                    document.  getElementById('mainSection').style.display = 'grid';
                     
                     renderPlanner();
                 } else {
-                    showError('Failed to load planner:   ' + data.message);
+                    showError('Failed to load planner:    ' + data.message);
                 }
             } catch (error) {
-                showError('Failed to load planner: ' + error.message);
+                showError('Failed to load planner:  ' + error.message);
             }
         }
 
@@ -530,7 +530,7 @@
                         <div class="meal-card-header">
                             ${meal.imageUrl ? `<img src="${meal.imageUrl}" class="meal-card-image" alt="${meal.mealName}">` : ''}
                             <div class="meal-card-info">
-                                <div class="meal-card-name">${meal.mealName}</div>
+                                <div class="meal-card-name">${meal. mealName}</div>
                                 <span class="meal-card-source">${meal.source}</span>
                             </div>
                         </div>
@@ -544,12 +544,12 @@
                 
                 // Add drag listeners to meal cards
                 document.querySelectorAll('.meal-card').forEach(card => {
-                    card. addEventListener('dragstart', dragStart);
+                    card.  addEventListener('dragstart', dragStart);
                     card.addEventListener('dragend', dragEnd);
                 });
             }
             
-            document.getElementById('iLikeCount').textContent = likedMeals. length;
+            document.getElementById('iLikeCount').textContent = likedMeals.  length;
 
             // Render weekly calendar
             days.forEach(day => {
@@ -559,7 +559,7 @@
                 if (dayMeals.length === 0) {
                     dayContainer.innerHTML = '<div class="empty-state" style="font-size: 0.9em; padding: 10px;">Drag meals here</div>';
                 } else {
-                    dayContainer. innerHTML = dayMeals.map(meal => `
+                    dayContainer.  innerHTML = dayMeals.map(meal => `
                         <div class="day-meal" draggable="true" data-meal-id="${meal.mealId}" data-from-day="${day}">
                             <div class="day-meal-name">${meal.mealName}</div>
                             <div class="day-meal-source">${meal.source}</div>
@@ -571,7 +571,7 @@
                     
                     // Add drag listeners to day meals
                     dayContainer.querySelectorAll('.day-meal').forEach(dayMeal => {
-                        dayMeal. addEventListener('dragstart', dragStartFromDay);
+                        dayMeal.  addEventListener('dragstart', dragStartFromDay);
                         dayMeal.addEventListener('dragend', dragEnd);
                     });
                 }
@@ -581,7 +581,7 @@
             
             // Add drop listeners to day slots
             document.querySelectorAll('.day-slot').forEach(slot => {
-                slot.addEventListener('dragover', allowDrop);
+                slot. addEventListener('dragover', allowDrop);
                 slot.addEventListener('dragleave', dragLeave);
                 slot.addEventListener('drop', drop);
             });
@@ -589,21 +589,21 @@
 
         // Drag and Drop functions
         function dragStart(event) {
-            draggedMealId = event.target.dataset. mealId;
+            draggedMealId = event.target.dataset.  mealId;
             draggedFromDay = null;
             event.target.classList.add('dragging');
             console.log('Dragging meal from I Like:', draggedMealId); // Debug
         }
 
         function dragStartFromDay(event) {
-            draggedMealId = event.target.dataset.mealId;
-            draggedFromDay = event.target. dataset.fromDay;
+            draggedMealId = event.target.dataset. mealId;
+            draggedFromDay = event.target.  dataset.fromDay;
             event.target.classList.add('dragging');
             console.log('Dragging meal from day:', draggedMealId, draggedFromDay); // Debug
         }
 
         function dragEnd(event) {
-            event.target. classList.remove('dragging');
+            event.target.  classList.remove('dragging');
         }
 
         function allowDrop(event) {
@@ -614,19 +614,19 @@
         function dragLeave(event) {
             // Only remove if we're actually leaving the slot
             if (event.target.classList.contains('day-slot')) {
-                event.currentTarget.classList.remove('drag-over');
+                event. currentTarget.classList.remove('drag-over');
             }
         }
 
         async function drop(event) {
-            event. preventDefault();
+            event.  preventDefault();
             event.currentTarget.classList.remove('drag-over');
             
-            const day = event.currentTarget.dataset.day;
+            const day = event.currentTarget.dataset. day;
             
             console.log('Dropped on day:', day, 'Meal ID:', draggedMealId, 'From day:', draggedFromDay); // Debug
             
-            if (! draggedMealId || !day) return;
+            if (!  draggedMealId || ! day) return;
 
             // If dragging from another day, remove from that day first
             if (draggedFromDay) {
@@ -639,35 +639,34 @@
             const result = await assignMealToDayAPI(draggedMealId, day);
             
             if (result.success) {
-                console.log('Successfully assigned! '); // Debug
+                console.log('Successfully assigned!  '); // Debug
                 await loadPlanner();
             } else {
-                alert('Failed to assign meal: ' + result.message);
+                alert('Failed to assign meal:  ' + result.message);
             }
 
             draggedMealId = null;
             draggedFromDay = null;
         }
 
-        // API calls
+        // API calls - ALL USING GET NOW
         async function assignMealToDayAPI(mealId, day) {
             try {
                 console.log('API call:  assignMealToDay', mealId, day); // Debug
-                const response = await fetch(WEB_APP_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        action: 'assignMealToDay',
-                        mealId:  parseInt(mealId),
-                        day: day
-                    })
+                const url = `${WEB_APP_URL}? action=assignMealToDay&mealId=${mealId}&day=${encodeURIComponent(day)}`;
+                
+                console.log('Calling URL:', url); // Debug
+                
+                const response = await fetch(url, {
+                    method: 'GET',
+                    redirect: 'follow'
                 });
                 const result = await response.json();
                 console.log('API response:', result); // Debug
                 return result;
             } catch (error) {
                 console.error('API error:', error); // Debug
-                return { success: false, message: error.message };
+                return { success: false, message:   error.message };
             }
         }
 
@@ -685,14 +684,13 @@
 
         async function removeMealFromDayAPI(mealId, day) {
             try {
-                const response = await fetch(WEB_APP_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON. stringify({ 
-                        action:  'removeMealFromDay',
-                        mealId: parseInt(mealId),
-                        day: day
-                    })
+                const url = `${WEB_APP_URL}?action=removeMealFromDay&mealId=${mealId}&day=${encodeURIComponent(day)}`;
+                
+                console.log('Removing from day URL:', url); // Debug
+                
+                const response = await fetch(url, {
+                    method: 'GET',
+                    redirect:  'follow'
                 });
                 return await response.json();
             } catch (error) {
@@ -704,16 +702,16 @@
             if (!confirm('Remove this meal from your planner completely?')) return;
             
             try {
-                const response = await fetch(WEB_APP_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        action: 'removeMealFromPlanner',
-                        mealId: parseInt(mealId)
-                    })
+                const url = `${WEB_APP_URL}? action=removeMealFromPlanner&mealId=${mealId}`;
+                
+                console.log('Removing completely URL:', url); // Debug
+                
+                const response = await fetch(url, {
+                    method: 'GET',
+                    redirect:  'follow'
                 });
                 
-                const result = await response.json();
+                const result = await response.  json();
                 
                 if (result.success) {
                     await loadPlanner();
@@ -721,7 +719,7 @@
                     alert('Failed to remove meal: ' + result.message);
                 }
             } catch (error) {
-                alert('Error: ' + error.message);
+                alert('Error:  ' + error.message);
             }
         }
     </script>
