@@ -31,8 +31,8 @@
 
         h1 {
             font-size: 3em;
-            margin-bottom:  10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+            text-shadow:  2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .back-btn {
@@ -53,16 +53,10 @@
         }
 
         . planner-layout {
-            display: grid;
-            grid-template-columns: 350px 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 20px;
             margin-bottom: 30px;
-        }
-
-        @media (max-width: 1024px) {
-            .planner-layout {
-                grid-template-columns: 1fr;
-            }
         }
 
         .i-like-section {
@@ -70,11 +64,9 @@
             border-radius: 15px;
             padding: 20px;
             box-shadow:  0 10px 30px rgba(0,0,0,0.2);
-            max-height: 800px;
-            overflow-y:  auto;
         }
 
-        . i-like-section h2 {
+        .i-like-section h2 {
             color: #667eea;
             margin-bottom: 15px;
             display: flex;
@@ -90,14 +82,39 @@
             font-size:  0.8em;
         }
 
-        . meal-card {
+        #iLikeBox {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+        }
+
+        @media (max-width: 1200px) {
+            #iLikeBox {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            #iLikeBox {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            #iLikeBox {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .meal-card {
             background: #f8f9fa;
             border-radius: 10px;
-            padding: 15px;
-            margin-bottom:  15px;
+            padding: 10px;
             cursor: grab;
             transition: transform 0.2s, box-shadow 0.2s;
             border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
         }
 
         .meal-card:hover {
@@ -109,70 +126,55 @@
             cursor: grabbing;
         }
 
-        .meal-card.dragging {
+        .meal-card. dragging {
             opacity: 0.5;
             transform: rotate(5deg);
         }
 
-        . meal-card-header {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 10px;
-        }
-
-        .meal-card-image {
-            width: 60px;
-            height: 60px;
+        . meal-card-image {
+            width: 100%;
+            height: 120px;
             border-radius: 8px;
             object-fit: cover;
-        }
-
-        .meal-card-info {
-            flex: 1;
+            margin-bottom: 10px;
         }
 
         .meal-card-name {
             font-weight: 600;
-            color: #333;
+            color:  #333;
             margin-bottom: 5px;
-            font-size: 1em;
+            font-size: 0.9em;
+            line-height: 1.3;
+            min-height: 35px;
         }
 
-        .meal-card-source {
-            font-size: 0.8em;
+        . meal-card-source {
+            font-size: 0.7em;
             color: #666;
             background: #e0e0e0;
-            padding: 2px 8px;
-            border-radius:  10px;
+            padding: 2px 6px;
+            border-radius: 8px;
             display: inline-block;
+            margin-bottom: 8px;
         }
 
-        .meal-card-actions {
-            display: flex;
-            gap: 5px;
-            margin-top:  10px;
-        }
-
-        .meal-card-btn {
-            flex: 1;
+        . meal-card-btn {
+            width: 100%;
             padding:  6px 10px;
             border: none;
             border-radius: 5px;
-            font-size: 0.85em;
+            font-size: 0.75em;
             cursor: pointer;
             transition: opacity 0.2s;
+            background: #ff6b6b;
+            color: white;
         }
 
         .meal-card-btn:hover {
             opacity:  0.8;
         }
 
-        .btn-remove {
-            background: #ff6b6b;
-            color:  white;
-        }
-
-        . weekly-calendar {
+        .weekly-calendar {
             background: white;
             border-radius: 15px;
             padding: 20px;
@@ -190,8 +192,8 @@
             gap: 15px;
         }
 
-        . day-slot {
-            background:  #f8f9fa;
+        .day-slot {
+            background: #f8f9fa;
             border-radius: 10px;
             padding: 15px;
             min-height: 150px;
@@ -217,16 +219,16 @@
         .day-meal-count {
             background: #667eea;
             color: white;
-            padding: 2px 8px;
+            padding:  2px 8px;
             border-radius: 10px;
-            font-size: 0.75em;
+            font-size:  0.75em;
         }
 
         . day-meal {
-            background:  white;
+            background: white;
             border-radius: 8px;
             padding: 10px;
-            margin-bottom:  8px;
+            margin-bottom: 8px;
             cursor: grab;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             border-left: 4px solid #667eea;
@@ -237,14 +239,14 @@
         }
 
         .day-meal-name {
-            font-weight:  600;
+            font-weight: 600;
             color: #333;
             font-size: 0.9em;
             margin-bottom: 5px;
         }
 
-        .day-meal-source {
-            font-size:  0.75em;
+        . day-meal-source {
+            font-size: 0.75em;
             color: #666;
         }
 
@@ -291,9 +293,10 @@
             color: #999;
             padding: 30px;
             font-style: italic;
+            grid-column: 1 / -1;
         }
 
-        .error-message {
+        . error-message {
             background: #f8d7da;
             color: #721c24;
             padding: 20px;
@@ -325,7 +328,7 @@
             margin:  10px 0;
         }
 
-        .config-input: focus {
+        .config-input:focus {
             outline: none;
             border-color: #667eea;
         }
@@ -364,7 +367,7 @@
         <div id="configSection" class="config-prompt" style="display: none;">
             <h2>⚙️ Configuration Required</h2>
             <p>Please enter your Google Apps Script Web App URL:</p>
-            <input type="text" id="webAppUrlInput" class="config-input" placeholder="https://script.google.com/macros/s/... ">
+            <input type="text" id="webAppUrlInput" class="config-input" placeholder="https://script.google.com/macros/s/...">
             <button class="btn-primary" onclick="saveConfigAndLoad()">Save & Load Planner</button>
         </div>
 
@@ -484,13 +487,13 @@
                 const response = await fetch(WEB_APP_URL + '?action=getPlanner');
                 const data = await response.json();
                 
-                console.log('Planner data loaded:', data); // Debug
+                console.log('Planner data loaded:', data);
                 
                 if (data.success) {
                     plannerData = data.planner;
                     
                     document.getElementById('loadingSection').style.display = 'none';
-                    document. getElementById('mainSection').style.display = 'grid';
+                    document. getElementById('mainSection').style.display = 'flex';
                     
                     renderPlanner();
                 } else {
@@ -516,10 +519,20 @@
         }
 
         function renderPlanner() {
-            console.log('Rendering planner with data:', plannerData); // Debug
+            console.log('Rendering planner with data:', plannerData);
             
-            // Render "I Like" box
-            const likedMeals = plannerData.filter(m => m.status === 'liked');
+            // Get assigned meal IDs
+            const assignedMealIds = plannerData
+                .filter(m => m.status === 'assigned')
+                .map(m => m.mealId);
+            
+            console.log('Assigned meal IDs:', assignedMealIds);
+            
+            // Render "I Like" box - only show meals that are NOT assigned to any day
+            const likedMeals = plannerData. filter(m => 
+                m.status === 'liked' && !assignedMealIds.includes(m.mealId)
+            );
+            
             const iLikeBox = document.getElementById('iLikeBox');
             
             if (likedMeals.length === 0) {
@@ -527,18 +540,12 @@
             } else {
                 iLikeBox.innerHTML = likedMeals.map(meal => `
                     <div class="meal-card" draggable="true" data-meal-id="${meal.mealId}">
-                        <div class="meal-card-header">
-                            ${meal.imageUrl ? `<img src="${meal.imageUrl}" class="meal-card-image" alt="${meal.mealName}">` : ''}
-                            <div class="meal-card-info">
-                                <div class="meal-card-name">${meal.mealName}</div>
-                                <span class="meal-card-source">${meal.source}</span>
-                            </div>
-                        </div>
-                        <div class="meal-card-actions">
-                            <button class="meal-card-btn btn-remove" onclick="removeMealCompletely(${meal.mealId})">
-                                🗑️ Remove
-                            </button>
-                        </div>
+                        ${meal.imageUrl ? `<img src="${meal.imageUrl}" class="meal-card-image" alt="${meal.mealName}">` : ''}
+                        <div class="meal-card-name">${meal. mealName}</div>
+                        <span class="meal-card-source">${meal.source}</span>
+                        <button class="meal-card-btn" onclick="removeMealCompletely(${meal.mealId})">
+                            🗑️ Remove
+                        </button>
                     </div>
                 `).join('');
                 
@@ -559,7 +566,7 @@
                 if (dayMeals.length === 0) {
                     dayContainer.innerHTML = '<div class="empty-state" style="font-size: 0.9em; padding: 10px;">Drag meals here</div>';
                 } else {
-                    dayContainer.innerHTML = dayMeals.map(meal => `
+                    dayContainer. innerHTML = dayMeals.map(meal => `
                         <div class="day-meal" draggable="true" data-meal-id="${meal.mealId}" data-from-day="${day}">
                             <div class="day-meal-name">${meal.mealName}</div>
                             <div class="day-meal-source">${meal.source}</div>
@@ -571,7 +578,7 @@
                     
                     // Add drag listeners to day meals
                     dayContainer.querySelectorAll('.day-meal').forEach(dayMeal => {
-                        dayMeal. addEventListener('dragstart', dragStartFromDay);
+                        dayMeal.addEventListener('dragstart', dragStartFromDay);
                         dayMeal.addEventListener('dragend', dragEnd);
                     });
                 }
@@ -592,18 +599,18 @@
             draggedMealId = event.target.dataset. mealId;
             draggedFromDay = null;
             event.target.classList.add('dragging');
-            console.log('Dragging meal from I Like:', draggedMealId); // Debug
+            console.log('Dragging meal from I Like:', draggedMealId);
         }
 
         function dragStartFromDay(event) {
             draggedMealId = event.target.dataset.mealId;
             draggedFromDay = event.target. dataset.fromDay;
             event.target.classList.add('dragging');
-            console.log('Dragging meal from day:', draggedMealId, draggedFromDay); // Debug
+            console.log('Dragging meal from day:', draggedMealId, draggedFromDay);
         }
 
         function dragEnd(event) {
-            event.target. classList.remove('dragging');
+            event.target.classList. remove('dragging');
         }
 
         function allowDrop(event) {
@@ -612,8 +619,7 @@
         }
 
         function dragLeave(event) {
-            // Only remove if we're actually leaving the slot
-            if (event.target. classList.contains('day-slot')) {
+            if (event.target.classList.contains('day-slot')) {
                 event.currentTarget.classList.remove('drag-over');
             }
         }
@@ -622,24 +628,24 @@
             event. preventDefault();
             event.currentTarget.classList.remove('drag-over');
             
-            const day = event.currentTarget.dataset.day;
+            const day = event.currentTarget.dataset. day;
             
-            console.log('Dropped on day:', day, 'Meal ID:', draggedMealId, 'From day:', draggedFromDay); // Debug
+            console.log('Dropped on day:', day, 'Meal ID:', draggedMealId, 'From day:', draggedFromDay);
             
             if (! draggedMealId || !day) return;
 
             // If dragging from another day, remove from that day first
             if (draggedFromDay) {
-                console.log('Removing from previous day:', draggedFromDay); // Debug
+                console.log('Removing from previous day:', draggedFromDay);
                 await removeMealFromDayAPI(draggedMealId, draggedFromDay);
             }
 
             // Assign to new day
-            console.log('Assigning to new day:', day); // Debug
+            console.log('Assigning to new day:', day);
             const result = await assignMealToDayAPI(draggedMealId, day);
             
             if (result.success) {
-                console.log('Successfully assigned! '); // Debug
+                console.log('Successfully assigned! ');
                 await loadPlanner();
             } else {
                 alert('Failed to assign meal:  ' + result.message);
@@ -649,23 +655,23 @@
             draggedFromDay = null;
         }
 
-        // API calls - ALL USING GET NOW - NO SPACES AFTER ? 
+        // API calls
         async function assignMealToDayAPI(mealId, day) {
             try {
-                console.log('API call:  assignMealToDay', mealId, day); // Debug
+                console.log('API call:  assignMealToDay', mealId, day);
                 const url = `${WEB_APP_URL}?action=assignMealToDay&mealId=${mealId}&day=${encodeURIComponent(day)}`;
                 
-                console.log('Calling URL:', url); // Debug
+                console.log('Calling URL:', url);
                 
                 const response = await fetch(url, {
                     method: 'GET',
                     redirect: 'follow'
                 });
                 const result = await response.json();
-                console.log('API response:', result); // Debug
+                console.log('API response:', result);
                 return result;
             } catch (error) {
-                console.error('API error:', error); // Debug
+                console.error('API error:', error);
                 return { success: false, message: error.message };
             }
         }
@@ -686,11 +692,11 @@
             try {
                 const url = `${WEB_APP_URL}?action=removeMealFromDay&mealId=${mealId}&day=${encodeURIComponent(day)}`;
                 
-                console.log('Removing from day URL:', url); // Debug
+                console.log('Removing from day URL:', url);
                 
                 const response = await fetch(url, {
                     method: 'GET',
-                    redirect:  'follow'
+                    redirect: 'follow'
                 });
                 return await response.json();
             } catch (error) {
@@ -704,11 +710,11 @@
             try {
                 const url = `${WEB_APP_URL}? action=removeMealFromPlanner&mealId=${mealId}`;
                 
-                console.log('Removing completely URL:', url); // Debug
+                console.log('Removing completely URL:', url);
                 
                 const response = await fetch(url, {
                     method: 'GET',
-                    redirect:  'follow'
+                    redirect: 'follow'
                 });
                 
                 const result = await response.json();
