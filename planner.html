@@ -84,7 +84,7 @@
 
         @media (max-width: 768px) {
             .days-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns:  repeat(2, 1fr);
             }
         }
 
@@ -104,11 +104,11 @@
         }
 
         .day-slot. drag-over {
-            background:  #e8f5e9;
+            background: #e8f5e9;
             border-color: #4caf50;
         }
 
-        .day-slot-header {
+        . day-slot-header {
             font-weight: 600;
             color: #667eea;
             margin-bottom: 10px;
@@ -145,7 +145,7 @@
             cursor: grab;
         }
 
-        .day-meal:active {
+        .day-meal: active {
             cursor: grabbing;
         }
 
@@ -177,7 +177,7 @@
             color:  white;
             border: none;
             border-radius: 5px;
-            font-size: 0.75em;
+            font-size:  0.75em;
             cursor: pointer;
             transition: background 0.2s;
         }
@@ -190,7 +190,7 @@
             background: white;
             border-radius: 15px;
             padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow:  0 10px 30px rgba(0,0,0,0.2);
         }
 
         .i-like-section h2 {
@@ -207,7 +207,7 @@
             color: white;
             padding: 3px 10px;
             border-radius:  15px;
-            font-size:  0.8em;
+            font-size: 0.8em;
         }
 
         #iLikeBox {
@@ -236,7 +236,7 @@
 
         .meal-card:hover {
             transform: translateY(-2px);
-            box-shadow:  0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         .meal-card.dragging {
@@ -249,8 +249,8 @@
             width: 100%;
             height: 120px;
             border-radius: 8px;
-            object-fit:  cover;
-            margin-bottom:  10px;
+            object-fit: cover;
+            margin-bottom: 10px;
             pointer-events: none;
         }
 
@@ -324,7 +324,7 @@
         @keyframes slideDown {
             from {
                 opacity: 0;
-                transform: translateY(-50px);
+                transform:  translateY(-50px);
             }
             to {
                 opacity: 1;
@@ -343,7 +343,7 @@
         .modal-title {
             font-size: 1.8em;
             color: #667eea;
-            margin: 0;
+            margin:  0;
         }
 
         .modal-close {
@@ -381,10 +381,10 @@
             color: white;
             border-radius: 20px;
             font-size:  0.9em;
-            margin-bottom:  15px;
+            margin-bottom: 15px;
         }
 
-        .modal-description {
+        . modal-description {
             color: #666;
             font-style: italic;
             margin-bottom: 20px;
@@ -464,7 +464,7 @@
             max-width: 500px;
             padding: 12px;
             border: 2px solid #e0e0e0;
-            border-radius:  8px;
+            border-radius: 8px;
             font-size: 1em;
             margin:  10px 0;
         }
@@ -508,7 +508,7 @@
         <div id="configSection" class="config-prompt" style="display: none;">
             <h2>⚙️ Configuration Required</h2>
             <p>Please enter your Google Apps Script Web App URL:</p>
-            <input type="text" id="webAppUrlInput" class="config-input" placeholder="https://script.google.com/macros/s/... ">
+            <input type="text" id="webAppUrlInput" class="config-input" placeholder="https://script.google.com/macros/s/...">
             <button class="btn-primary" onclick="saveConfigAndLoad()">Save & Load Planner</button>
         </div>
 
@@ -663,7 +663,7 @@
 
         async function loadPlanner() {
             try {
-                const response = await fetch(WEB_APP_URL + '?action=getPlanner');
+                const response = await fetch(WEB_APP_URL + '? action=getPlanner');
                 const data = await response.json();
                 
                 console.log('Planner data loaded:', data);
@@ -744,7 +744,7 @@
                 } else {
                     dayContainer.innerHTML = dayMeals.map(meal => `
                         <div class="day-meal" draggable="true" data-meal-id="${meal.mealId}" data-from-day="${day}">
-                            <div class="day-meal-name" onclick="event.stopPropagation(); showRecipe(${meal.mealId})">${meal.mealName}</div>
+                            <div class="day-meal-name" data-meal-id="${meal.mealId}">${meal.mealName}</div>
                             <div class="day-meal-source">${meal.source}</div>
                             <button class="day-meal-remove" onclick="event.stopPropagation(); removeMealFromDay(${meal.mealId}, '${day}')">
                                 ← Back to I Like
@@ -755,6 +755,14 @@
                     dayContainer.querySelectorAll('.day-meal').forEach(dayMeal => {
                         dayMeal.addEventListener('dragstart', dragStartFromDay);
                         dayMeal.addEventListener('dragend', dragEnd);
+                    });
+                    
+                    dayContainer.querySelectorAll('.day-meal-name').forEach(nameEl => {
+                        nameEl. addEventListener('click', function(e) {
+                            e. stopPropagation();
+                            const mealId = this.getAttribute('data-meal-id');
+                            showRecipe(parseInt(mealId));
+                        });
                     });
                 }
                 
@@ -898,7 +906,7 @@
                 console.log('Successfully assigned! ');
                 await loadPlanner();
             } else {
-                alert('Failed to assign meal: ' + result.message);
+                alert('Failed to assign meal:  ' + result.message);
             }
 
             draggedMealId = null;
