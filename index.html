@@ -264,12 +264,13 @@
                 <div id="statusHemkop" class="status"></div>
             </div>
 
-            <div class="card coming-soon">
-                <h2>🏪 Willys Recipes <span class="badge soon">SOON</span></h2>
-                <p>Discover budget-friendly meal options from Willys with price comparisons.</p>
-                <button class="btn" disabled>
-                    Scrape Willys (Coming Soon)
+            <div class="card">
+                <h2>🏪 Willys Recipes <span class="badge">ACTIVE</span></h2>
+                <p>Discover budget-friendly Swedish recipes from Willys, including Tareq Taylor's weekend recipes.</p>
+                <button class="btn" onclick="scrapeMeals('scrapeWillys')" id="btnWillys">
+                    Scrape 10 Meals (Willys)
                 </button>
+                <div id="statusWillys" class="status"></div>
             </div>
         </div>
 
@@ -385,6 +386,7 @@
             if (action === 'scrapeMealDB') return 'btnMealDB';
             if (action === 'scrapeICA') return 'btnICA';
             if (action === 'scrapeHemkop') return 'btnHemkop';
+            if (action === 'scrapeWillys') return 'btnWillys';
             return 'btn';
         }
 
@@ -393,6 +395,7 @@
             if (action === 'scrapeMealDB') return 'statusMealDB';
             if (action === 'scrapeICA') return 'statusICA';
             if (action === 'scrapeHemkop') return 'statusHemkop';
+            if (action === 'scrapeWillys') return 'statusWillys';
             return 'status';
         }
 
@@ -401,6 +404,7 @@
             if (action === 'scrapeMealDB') return 'MealDB';
             if (action === 'scrapeICA') return 'ICA.se';
             if (action === 'scrapeHemkop') return 'Hemköp';
+            if (action === 'scrapeWillys') return 'Willys';
             return 'source';
         }
 
