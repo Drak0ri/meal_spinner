@@ -6,9 +6,9 @@
     <title>Meal Spinner - Dashboard</title>
     <style>
         * {
-            margin:  0;
+            margin: 0;
             padding: 0;
-            box-sizing:  border-box;
+            box-sizing: border-box;
         }
 
         body {
@@ -20,7 +20,7 @@
 
         .container {
             max-width: 1200px;
-            margin:  0 auto;
+            margin: 0 auto;
         }
 
         header {
@@ -33,7 +33,7 @@
         h1 {
             font-size: 3em;
             margin-bottom:  10px;
-            text-shadow:  2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .subtitle {
@@ -45,14 +45,14 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
-            margin-bottom:  40px;
+            margin-bottom: 40px;
         }
 
         .card {
             background: white;
-            border-radius:  15px;
-            padding:  30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow:  0 10px 30px rgba(0,0,0,0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -70,7 +70,7 @@
         .card p {
             color: #666;
             margin-bottom: 20px;
-            line-height:  1.6;
+            line-height: 1.6;
         }
 
         .btn {
@@ -119,8 +119,8 @@
 
         .status.success {
             background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+            color:  #155724;
+            border:  1px solid #c3e6cb;
             display: block;
         }
 
@@ -145,9 +145,9 @@
         .badge {
             display: inline-block;
             padding: 5px 10px;
-            background: #ffd700;
-            color: #333;
-            border-radius: 5px;
+            background: #4CAF50;
+            color:  white;
+            border-radius:  5px;
             font-size:  0.8em;
             font-weight: bold;
             margin-left: 10px;
@@ -187,7 +187,7 @@
 
         .spinner {
             border: 3px solid #f3f3f3;
-            border-top:  3px solid #667eea;
+            border-top: 3px solid #667eea;
             border-radius: 50%;
             width: 20px;
             height: 20px;
@@ -245,12 +245,13 @@
                 <div id="statusMealDB" class="status"></div>
             </div>
 
-            <div class="card coming-soon">
-                <h2>🛒 ICA Recipes <span class="badge soon">SOON</span></h2>
-                <p>Fetch recipes and deals from ICA supermarket. Includes ingredient prices and availability.</p>
-                <button class="btn" disabled>
-                    Scrape ICA (Coming Soon)
+            <div class="card">
+                <h2>🇸🇪 ICA Recipes <span class="badge">ACTIVE</span></h2>
+                <p>Fetch authentic Swedish recipes from ICA supermarket.  Includes ingredients and step-by-step instructions.</p>
+                <button class="btn" onclick="scrapeMeals('scrapeICA')" id="btnICA">
+                    Scrape 10 Meals (ICA)
                 </button>
+                <div id="statusICA" class="status"></div>
             </div>
 
             <div class="card coming-soon">
@@ -282,7 +283,7 @@
 
             <div class="card coming-soon">
                 <h2>📅 Weekly Meal Planner <span class="badge soon">SOON</span></h2>
-                <p>Plan your weekly meals by selecting from your database. Drag and drop meals to specific days.</p>
+                <p>Plan your weekly meals by selecting from your database. Drag and drop meals to specific days. </p>
                 <button class="btn secondary" disabled>
                     Open Planner
                 </button>
@@ -333,17 +334,24 @@
         // Scrape meals function
         async function scrapeMeals(action) {
             if (!WEB_APP_URL) {
-                showStatus('statusMealDB', '❌ Please configure your Web App URL first! ', 'error');
+                const statusId = action === 'scrapeMealDB' ? 'statusMealDB' : 'statusICA';
+                showStatus(statusId, '❌ Please configure your Web App URL first! ', 'error');
                 return;
             }
 
-            const btn = document.getElementById('btnMealDB');
-            const statusDiv = document.getElementById('statusMealDB');
+            const btnId = action === 'scrapeMealDB' ? 'btnMealDB' : 'btnICA';
+            const statusId = action === 'scrapeMealDB' ? 'statusMealDB' : 'statusICA';
+            const btn = document.getElementById(btnId);
+            const statusDiv = document.getElementById(statusId);
+            
+            const originalText = btn.innerHTML;
             
             // Disable button and show loading
             btn.disabled = true;
             btn.innerHTML = 'Scraping...  <span class="spinner"></span>';
-            showStatus('statusMealDB', '⏳ Fetching meals from MealDB... ', 'info');
+            
+            const sourceName = action === 'scrapeMealDB' ? 'MealDB' : 'ICA. se';
+            showStatus(statusId, `⏳ Fetching meals from ${sourceName}... `, 'info');
 
             try {
                 const response = await fetch(WEB_APP_URL, {
@@ -352,21 +360,22 @@
                     headers: {
                         'Content-Type':  'application/json',
                     },
-                    body: JSON.stringify({ action:  action })
+                    body: JSON.stringify({ action: action })
                 });
 
                 // Note: With no-cors mode, we can't read the response
                 // So we'll wait a bit and then check the meal count
-                await new Promise(resolve => setTimeout(resolve, 5000));
+                const waitTime = action === 'scrapeICA' ? 15000 : 5000; // ICA takes longer
+                await new Promise(resolve => setTimeout(resolve, waitTime));
                 
-                showStatus('statusMealDB', '✅ Scraping completed!  Check your Google Sheet.', 'success');
+                showStatus(statusId, '✅ Scraping completed!  Check your Google Sheet.', 'success');
                 loadMealCount();
 
             } catch (error) {
-                showStatus('statusMealDB', '❌ Error:  ' + error.message, 'error');
+                showStatus(statusId, '❌ Error:  ' + error.message, 'error');
             } finally {
                 btn.disabled = false;
-                btn.innerHTML = 'Scrape 10 Meals (MealDB)';
+                btn.innerHTML = originalText;
             }
         }
 
@@ -393,11 +402,11 @@
             statusDiv.textContent = message;
             statusDiv.className = 'status ' + type;
             
-            // Auto-hide after 5 seconds for success messages
+            // Auto-hide after 10 seconds for success messages
             if (type === 'success') {
                 setTimeout(() => {
                     statusDiv.style.display = 'none';
-                }, 5000);
+                }, 10000);
             }
         }
 
