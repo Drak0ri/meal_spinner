@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Spinner - Spin to Decide! </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .controls {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        . filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .filter-btn. active {
+            background: #667eea;
+            color: white;
+        }
+
+        .meal-count-display {
+            text-align:  center;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        . spinner-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 968px) {
+            .spinner-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .wheel-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow:  0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wheel-wrapper {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 20px auto;
+        }
+
+        @media (max-width: 500px) {
+            .wheel-wrapper {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        #wheelCanvas {
+            width: 100%;
+            height:  100%;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+        }
+
+        .wheel-pointer {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width:  0;
+            height: 0;
+            border-left:  20px solid transparent;
+            border-right: 20px solid transparent;
+            border-top: 30px solid #ff4757;
+            filter: drop-shadow(0 3px 5px rgba(0,0,0,0.3));
+            z-index: 10;
+        }
+
+        .spin-btn {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size:  1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition:  transform 0.2s, opacity 0.3s;
+            margin-top: 20px;
+        }
+
+        .spin-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .spin-btn:active {
+            transform: scale(0.95);
+        }
+
+        .spin-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .result-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        .result-container.show {
+            display: block;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform:  translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform:  translateY(0);
+            }
+        }
+
+        .result-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        . result-title {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .result-source {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #667eea;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .result-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit:  cover;
+            border-radius:  10px;
+            margin:  20px 0;
+        }
+
+        .result-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .result-section {
+            margin-bottom: 25px;
+        }
+
+        . result-section h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        . result-section p {
+            color: #555;
+            line-height: 1.8;
+            white-space: pre-wrap;
+        }
+
+        .result-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        . action-btn {
+            flex: 1;
+            padding:  12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor:  pointer;
+            transition: transform 0.2s;
+        }
+
+        .action-btn:hover {
+            transform:  translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #666;
+        }
+
+        .loading {
+            text-align: center;
+            color: white;
+            font-size: 1.2em;
+            padding: 40px;
+        }
+
+        . spinner-loading {
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform:  rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 20px;
+            border-radius:  10px;
+            text-align: center;
+            margin:  20px 0;
+        }
+
+        .config-prompt {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .config-prompt h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .config-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius:  8px;
+            font-size: 1em;
+            margin:  10px 0;
+        }
+
+        .config-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">← Back to Dashboard</a>
+
+    <div class="container">
+        <header>
+            <h1>🎡 Meal Spinner</h1>
+            <p class="subtitle">Spin the wheel to decide what to cook!</p>
+        </header>
+
+        <div id="loadingSection" class="loading">
+            <div class="spinner-loading"></div>
+            <p>Loading meals from your database...</p>
+        </div>
+
+        <div id="configSection" class="config-prompt" style="display: none;">
+            <h2>⚙️ Configuration Required</h2>
+            <p>Please enter your Google Apps Script Web App URL:</p>
+            <input type="text" id="webAppUrlInput" class="config-input" placeholder="https://script.google.com/macros/s/...">
+            <button class="spin-btn" onclick="saveConfigAndLoad()">Save & Load Meals</button>
+        </div>
+
+        <div id="errorSection" style="display: none;"></div>
+
+        <div id="mainSection" style="display: none;">
+            <div class="controls">
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all" onclick="filterMeals('all')">
+                        🌍 All Sources
+                    </button>
+                    <button class="filter-btn" data-filter="MealDB API" onclick="filterMeals('MealDB API')">
+                        🌐 MealDB
+                    </button>
+                    <button class="filter-btn" data-filter="ICA. se" onclick="filterMeals('ICA.se')">
+                        🇸🇪 ICA
+                    </button>
+                    <button class="filter-btn" data-filter="Hemköp. se" onclick="filterMeals('Hemköp.se')">
+                        🛍️ Hemköp
+                    </button>
+                </div>
+                <div class="meal-count-display" id="mealCountDisplay">
+                    Loading meals...
+                </div>
+            </div>
+
+            <div class="spinner-section">
+                <div class="wheel-container">
+                    <div class="wheel-wrapper">
+                        <div class="wheel-pointer"></div>
+                        <canvas id="wheelCanvas"></canvas>
+                    </div>
+                    <button class="spin-btn" id="spinBtn" onclick="spinWheel()">
+                        🎰 SPIN THE WHEEL!
+                    </button>
+                </div>
+
+                <div class="result-container" id="resultContainer">
+                    <div class="result-header">
+                        <h2 class="result-title" id="resultTitle"></h2>
+                        <span class="result-source" id="resultSource"></span>
+                    </div>
+                    <img id="resultImage" class="result-image" style="display: none;">
+                    <p class="result-description" id="resultDescription"></p>
+                    
+                    <div class="result-section">
+                        <h3>📋 Ingredients</h3>
+                        <p id="resultIngredients"></p>
+                    </div>
+                    
+                    <div class="result-section">
+                        <h3>👨‍🍳 Instructions</h3>
+                        <p id="resultInstructions"></p>
+                    </div>
+
+                    <div class="result-actions">
+                        <button class="action-btn btn-primary" onclick="spinWheel()">
+                            🎰 Spin Again
+                        </button>
+                        <button class="action-btn btn-secondary" onclick="copyRecipe()">
+                            📋 Copy Recipe
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let WEB_APP_URL = localStorage.getItem('webAppUrl') || '';
+        let allMeals = [];
+        let filteredMeals = [];
+        let currentFilter = 'all';
+        let isSpinning = false;
+
+        // Wheel configuration
+        const canvas = document.getElementById('wheelCanvas');
+        const ctx = canvas ?  canvas.getContext('2d') : null;
+        let rotation = 0;
+        let targetRotation = 0;
+
+        // Colors for wheel segments
+        const colors = [
+            '#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', 
+            '#98D8C8', '#F7DC6F', '#BB8FCE', '#85C1E2',
+            '#F8B739', '#52B788', '#E07A5F', '#81B29A'
+        ];
+
+        // Initialize
+        window.onload = function() {
+            if (!WEB_APP_URL) {
+                document.getElementById('loadingSection').style.display = 'none';
+                document.getElementById('configSection').style.display = 'block';
+            } else {
+                loadMeals();
+            }
+        };
+
+        function saveConfigAndLoad() {
+            const url = document.getElementById('webAppUrlInput').value.trim();
+            if (url) {
+                localStorage.setItem('webAppUrl', url);
+                WEB_APP_URL = url;
+                document.getElementById('configSection').style.display = 'none';
+                document.getElementById('loadingSection').style.display = 'block';
+                loadMeals();
+            } else {
+                alert('Please enter a valid URL');
+            }
+        }
+
+        async function loadMeals() {
+            try {
+                const response = await fetch(WEB_APP_URL + '?action=getMeals');
+                const data = await response.json();
+                
+                if (data.meals && data.meals.length > 0) {
+                    allMeals = data.meals;
+                    filteredMeals = allMeals;
+                    
+                    document.getElementById('loadingSection').style.display = 'none';
+                    document. getElementById('mainSection').style.display = 'block';
+                    
+                    updateMealCount();
+                    drawWheel();
+                } else {
+                    showError('No meals found in your database.  Please scrape some meals first! ');
+                }
+            } catch (error) {
+                showError('Failed to load meals:  ' + error.message);
+            }
+        }
+
+        function showError(message) {
+            document.getElementById('loadingSection').style.display = 'none';
+            document.getElementById('errorSection').innerHTML = `
+                <div class="error-message">
+                    <h3>❌ Error</h3>
+                    <p>${message}</p>
+                    <button class="spin-btn" onclick="location.href='index.html'">
+                        Go to Dashboard
+                    </button>
+                </div>
+            `;
+            document.getElementById('errorSection').style.display = 'block';
+        }
+
+        function filterMeals(source) {
+            currentFilter = source;
+            
+            // Update button states
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.filter === source) {
+                    btn. classList.add('active');
+                }
+            });
+
+            // Filter meals
+            if (source === 'all') {
+                filteredMeals = allMeals;
+            } else {
+                filteredMeals = allMeals.filter(meal => meal.source === source);
+            }
+
+            updateMealCount();
+            drawWheel();
+            document.getElementById('resultContainer').classList.remove('show');
+        }
+
+        function updateMealCount() {
+            const total = allMeals.length;
+            const filtered = filteredMeals.length;
+            const filterText = currentFilter === 'all' ? 'all sources' : currentFilter;
+            
+            document.getElementById('mealCountDisplay').textContent = 
+                `Showing ${filtered} meal${filtered !== 1 ? 's' :  ''} from ${filterText} (Total: ${total})`;
+        }
+
+        function drawWheel() {
+            if (!canvas || !ctx || filteredMeals.length === 0) return;
+
+            const dpr = window.devicePixelRatio || 1;
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            ctx.scale(dpr, dpr);
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const radius = Math.min(centerX, centerY) - 10;
+
+            const sliceAngle = (2 * Math.PI) / filteredMeals.length;
+
+            ctx.clearRect(0, 0, rect.width, rect.height);
+            ctx.save();
+            ctx.translate(centerX, centerY);
+            ctx.rotate(rotation);
+
+            filteredMeals.forEach((meal, index) => {
+                const angle = index * sliceAngle;
+                
+                // Draw slice
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx. arc(0, 0, radius, angle, angle + sliceAngle);
+                ctx.closePath();
+                ctx.fillStyle = colors[index % colors.length];
+                ctx.fill();
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+
+                // Draw text
+                ctx.save();
+                ctx.rotate(angle + sliceAngle / 2);
+                ctx.textAlign = 'right';
+                ctx.fillStyle = '#fff';
+                ctx.font = 'bold 14px Arial';
+                ctx.shadowColor = 'rgba(0,0,0,0.5)';
+                ctx.shadowBlur = 3;
+                
+                const text = meal.name.length > 20 ? meal.name.substring(0, 20) + '...' : meal.name;
+                ctx.fillText(text, radius - 20, 5);
+                ctx.restore();
+            });
+
+            ctx.restore();
+
+            // Draw center circle
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 30, 0, 2 * Math.PI);
+            ctx.fillStyle = '#667eea';
+            ctx.fill();
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 4;
+            ctx.stroke();
+        }
+
+        function spinWheel() {
+            if (isSpinning || filteredMeals.length === 0) return;
+
+            isSpinning = true;
+            document.getElementById('spinBtn').disabled = true;
+            document.getElementById('resultContainer').classList.remove('show');
+
+            // Random spins (5-8 full rotations) plus random position
+            const spins = 5 + Math.random() * 3;
+            const randomAngle = Math.random() * (2 * Math.PI);
+            targetRotation = rotation + (spins * 2 * Math.PI) + randomAngle;
+
+            animateWheel();
+        }
+
+        function animateWheel() {
+            const duration = 4000; // 4 seconds
+            const startTime = Date.now();
+            const startRotation = rotation;
+
+            function animate() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Easing function (ease-out)
+                const easeProgress = 1 - Math.pow(1 - progress, 3);
+                
+                rotation = startRotation + (targetRotation - startRotation) * easeProgress;
+                drawWheel();
+
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    rotation = targetRotation % (2 * Math.PI);
+                    drawWheel();
+                    showResult();
+                }
+            }
+
+            animate();
+        }
+
+        function showResult() {
+            const sliceAngle = (2 * Math.PI) / filteredMeals.length;
+            
+            // The pointer is at the top (12 o'clock position)
+            // We need to find which slice is at the top after rotation
+            const normalizedRotation = (2 * Math.PI - (rotation % (2 * Math. PI))) % (2 * Math.PI);
+            const selectedIndex = Math.floor(normalizedRotation / sliceAngle) % filteredMeals.length;
+            
+            const selectedMeal = filteredMeals[selectedIndex];
+            
+            // Display result
+            document.getElementById('resultTitle').textContent = selectedMeal. name;
+            document.getElementById('resultSource').textContent = selectedMeal.source;
+            document. getElementById('resultDescription').textContent = selectedMeal.description;
+            document.getElementById('resultIngredients').textContent = selectedMeal.ingredients || 'No ingredients listed';
+            document.getElementById('resultInstructions').textContent = selectedMeal.instructions || 'No instructions provided';
+            
+            const resultImage = document.getElementById('resultImage');
+            if (selectedMeal.imageUrl) {
+                resultImage. src = selectedMeal.imageUrl;
+                resultImage.style. display = 'block';
+            } else {
+                resultImage. style.display = 'none';
+            }
+
+            setTimeout(() => {
+                document.getElementById('resultContainer').classList.add('show');
+                isSpinning = false;
+                document.getElementById('spinBtn').disabled = false;
+            }, 500);
+        }
+
+        function copyRecipe() {
+            const title = document.getElementById('resultTitle').textContent;
+            const source = document.getElementById('resultSource').textContent;
+            const description = document.getElementById('resultDescription').textContent;
+            const ingredients = document. getElementById('resultIngredients').textContent;
+            const instructions = document.getElementById('resultInstructions').textContent;
+
+            const recipeText = `${title}\nSource: ${source}\n\n${description}\n\nIngredients:\n${ingredients}\n\nInstructions:\n${instructions}`;
+
+            navigator.clipboard.writeText(recipeText).then(() => {
+                alert('✅ Recipe copied to clipboard!');
+            }).catch(() => {
+                alert('❌ Failed to copy recipe');
+            });
+        }
+
+        // Redraw wheel on window resize
+        window.addEventListener('resize', drawWheel);
+    </script>
+</body>
+</html>
