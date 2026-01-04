@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Spinner - Dashboard</title>
+    <style>
+        * {
+            margin:  0;
+            padding: 0;
+            box-sizing:  border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background:  linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin:  0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom:  10px;
+            text-shadow:  2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom:  40px;
+        }
+
+        .card {
+            background: white;
+            border-radius:  15px;
+            padding:  30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        . card:hover {
+            transform:  translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size:  1.5em;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height:  1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        . btn:hover {
+            opacity:  0.9;
+            transform: scale(1.02);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn. secondary {
+            background: #e0e0e0;
+            color: #666;
+        }
+
+        .status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            display: none;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            display: block;
+        }
+
+        .coming-soon {
+            opacity: 0.6;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #ffd700;
+            color: #333;
+            border-radius: 5px;
+            font-size:  0.8em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .badge.soon {
+            background: #ff9800;
+            color: white;
+        }
+
+        .config-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow:  0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .config-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .config-input {
+            width: 100%;
+            padding:  10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            margin-bottom:  10px;
+        }
+
+        . config-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top:  3px solid #667eea;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        . meal-count {
+            text-align: center;
+            color: white;
+            font-size: 1.5em;
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍽️ Meal Spinner</h1>
+            <p class="subtitle">Your Smart Swedish Meal Planning Assistant</p>
+        </header>
+
+        <!-- Configuration Section -->
+        <div class="config-section">
+            <h3>⚙️ Configuration</h3>
+            <label for="webAppUrl">Google Apps Script Web App URL:</label>
+            <input 
+                type="text" 
+                id="webAppUrl" 
+                class="config-input" 
+                placeholder="Paste your Web App URL here..."
+                value="">
+            <button class="btn" onclick="saveConfig()">Save Configuration</button>
+            <div id="configStatus" class="status"></div>
+        </div>
+
+        <!-- Data Sources -->
+        <div class="dashboard">
+            <div class="card">
+                <h2>🌐 MealDB API <span class="badge">ACTIVE</span></h2>
+                <p>Scrape 10 random healthy meals from the MealDB database.  Each click fetches unique meals. </p>
+                <button class="btn" onclick="scrapeMeals('scrapeMealDB')" id="btnMealDB">
+                    Scrape 10 Meals (MealDB)
+                </button>
+                <div id="statusMealDB" class="status"></div>
+            </div>
+
+            <div class="card coming-soon">
+                <h2>🛒 ICA Recipes <span class="badge soon">SOON</span></h2>
+                <p>Fetch recipes and deals from ICA supermarket. Includes ingredient prices and availability.</p>
+                <button class="btn" disabled>
+                    Scrape ICA (Coming Soon)
+                </button>
+            </div>
+
+            <div class="card coming-soon">
+                <h2>🛍️ Hemköp Recipes <span class="badge soon">SOON</span></h2>
+                <p>Get meal ideas from Hemköp with current deals and promotions on ingredients.</p>
+                <button class="btn" disabled>
+                    Scrape Hemköp (Coming Soon)
+                </button>
+            </div>
+
+            <div class="card coming-soon">
+                <h2>🏪 Willys Recipes <span class="badge soon">SOON</span></h2>
+                <p>Discover budget-friendly meal options from Willys with price comparisons. </p>
+                <button class="btn" disabled>
+                    Scrape Willys (Coming Soon)
+                </button>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="dashboard">
+            <div class="card coming-soon">
+                <h2>🎡 Meal Spinner <span class="badge soon">SOON</span></h2>
+                <p>Spin the wheel to randomly select from your meal database. Visual and fun way to decide what to cook!</p>
+                <button class="btn secondary" disabled>
+                    Launch Spinner
+                </button>
+            </div>
+
+            <div class="card coming-soon">
+                <h2>📅 Weekly Meal Planner <span class="badge soon">SOON</span></h2>
+                <p>Plan your weekly meals by selecting from your database. Drag and drop meals to specific days.</p>
+                <button class="btn secondary" disabled>
+                    Open Planner
+                </button>
+            </div>
+
+            <div class="card coming-soon">
+                <h2>📊 View Database <span class="badge soon">SOON</span></h2>
+                <p>Browse all scraped meals, filter by source, and manage your meal collection.</p>
+                <button class="btn secondary" disabled>
+                    View All Meals
+                </button>
+            </div>
+        </div>
+
+        <div class="meal-count" id="mealCount">
+            Database:  Loading...
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        let WEB_APP_URL = localStorage.getItem('webAppUrl') || '';
+        
+        // Load saved URL on page load
+        window.onload = function() {
+            document.getElementById('webAppUrl').value = WEB_APP_URL;
+            if (WEB_APP_URL) {
+                showStatus('configStatus', 'Web App URL loaded from storage', 'success');
+                loadMealCount();
+            } else {
+                showStatus('configStatus', 'Please enter your Google Apps Script Web App URL', 'info');
+            }
+        }
+
+        // Save configuration
+        function saveConfig() {
+            const url = document.getElementById('webAppUrl').value.trim();
+            if (url) {
+                localStorage.setItem('webAppUrl', url);
+                WEB_APP_URL = url;
+                showStatus('configStatus', '✅ Configuration saved successfully! ', 'success');
+                loadMealCount();
+            } else {
+                showStatus('configStatus', '❌ Please enter a valid URL', 'error');
+            }
+        }
+
+        // Scrape meals function
+        async function scrapeMeals(action) {
+            if (!WEB_APP_URL) {
+                showStatus('statusMealDB', '❌ Please configure your Web App URL first! ', 'error');
+                return;
+            }
+
+            const btn = document.getElementById('btnMealDB');
+            const statusDiv = document.getElementById('statusMealDB');
+            
+            // Disable button and show loading
+            btn.disabled = true;
+            btn.innerHTML = 'Scraping...  <span class="spinner"></span>';
+            showStatus('statusMealDB', '⏳ Fetching meals from MealDB... ', 'info');
+
+            try {
+                const response = await fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // Required for Google Apps Script
+                    headers: {
+                        'Content-Type':  'application/json',
+                    },
+                    body: JSON.stringify({ action:  action })
+                });
+
+                // Note: With no-cors mode, we can't read the response
+                // So we'll wait a bit and then check the meal count
+                await new Promise(resolve => setTimeout(resolve, 5000));
+                
+                showStatus('statusMealDB', '✅ Scraping completed!  Check your Google Sheet.', 'success');
+                loadMealCount();
+
+            } catch (error) {
+                showStatus('statusMealDB', '❌ Error:  ' + error.message, 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = 'Scrape 10 Meals (MealDB)';
+            }
+        }
+
+        // Load meal count
+        async function loadMealCount() {
+            if (!WEB_APP_URL) return;
+
+            try {
+                const response = await fetch(WEB_APP_URL + '?action=getMeals');
+                const data = await response. json();
+                
+                const count = data.meals ?  data.meals.length : 0;
+                document.getElementById('mealCount').innerHTML = 
+                    `📊 Database: <strong>${count} meals</strong>`;
+            } catch (error) {
+                document.getElementById('mealCount').innerHTML = 
+                    '📊 Database: Unable to load count';
+            }
+        }
+
+        // Show status message
+        function showStatus(elementId, message, type) {
+            const statusDiv = document.getElementById(elementId);
+            statusDiv.textContent = message;
+            statusDiv.className = 'status ' + type;
+            
+            // Auto-hide after 5 seconds for success messages
+            if (type === 'success') {
+                setTimeout(() => {
+                    statusDiv.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        // Refresh meal count every 30 seconds
+        setInterval(loadMealCount, 30000);
+    </script>
+</body>
+</html>
