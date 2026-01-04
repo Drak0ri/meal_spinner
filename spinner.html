@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background:  linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
             overflow-x: hidden;
@@ -33,7 +33,7 @@
         h1 {
             font-size: 3em;
             margin-bottom: 10px;
-            text-shadow:  2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .back-btn {
@@ -53,7 +53,7 @@
             background: rgba(255,255,255,0.3);
         }
 
-        . controls {
+        .controls {
             background: white;
             border-radius: 15px;
             padding: 20px;
@@ -61,7 +61,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        . filter-group {
+        .filter-group {
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
@@ -70,13 +70,13 @@
             margin-bottom: 15px;
         }
 
-        . filter-btn {
+        .filter-btn {
             padding: 10px 20px;
             border: 2px solid #667eea;
             background: white;
             color: #667eea;
-            border-radius:  8px;
-            cursor:  pointer;
+            border-radius: 8px;
+            cursor: pointer;
             font-weight: 600;
             transition: all 0.3s;
         }
@@ -85,7 +85,7 @@
             background: #f0f0f0;
         }
 
-        .filter-btn. active {
+        .filter-btn.active {
             background: #667eea;
             color: white;
         }
@@ -101,7 +101,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
-            margin-bottom:  30px;
+            margin-bottom: 30px;
         }
 
         @media (max-width: 968px) {
@@ -114,7 +114,7 @@
             background: white;
             border-radius: 15px;
             padding: 30px;
-            box-shadow:  0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -137,7 +137,7 @@
 
         #wheelCanvas {
             width: 100%;
-            height:  100%;
+            height: 100%;
             border-radius: 50%;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
@@ -148,7 +148,7 @@
             top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width:  0;
+            width: 0;
             height: 0;
             border-left: 20px solid transparent;
             border-right: 20px solid transparent;
@@ -163,8 +163,8 @@
             color: white;
             border: none;
             border-radius: 10px;
-            font-size:  1.2em;
-            font-weight:  600;
+            font-size: 1.2em;
+            font-weight: 600;
             cursor: pointer;
             transition: transform 0.2s, opacity 0.3s;
             margin-top: 20px;
@@ -200,17 +200,17 @@
         @keyframes slideIn {
             from {
                 opacity: 0;
-                transform:  translateY(20px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
-                transform:  translateY(0);
+                transform: translateY(0);
             }
         }
 
         .result-header {
-            text-align:  center;
-            margin-bottom:  20px;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         .result-title {
@@ -225,16 +225,16 @@
             background: #667eea;
             color: white;
             border-radius: 20px;
-            font-size:  0.9em;
+            font-size: 0.9em;
             font-weight: 600;
         }
 
         .result-image {
             width: 100%;
             max-height: 300px;
-            object-fit:  cover;
-            border-radius:  10px;
-            margin:  20px 0;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 20px 0;
         }
 
         .result-description {
@@ -248,13 +248,13 @@
             margin-bottom: 25px;
         }
 
-        . result-section h3 {
+        .result-section h3 {
             color: #667eea;
             margin-bottom: 10px;
             font-size: 1.3em;
         }
 
-        . result-section p {
+        .result-section p {
             color: #555;
             line-height: 1.8;
             white-space: pre-wrap;
@@ -278,12 +278,12 @@
             border: none;
             border-radius: 8px;
             font-weight: 600;
-            cursor:  pointer;
+            cursor: pointer;
             transition: transform 0.2s;
             font-size: 1em;
         }
 
-        . action-btn:hover {
+        .action-btn:hover {
             transform: translateY(-2px);
         }
 
@@ -309,7 +309,7 @@
             padding: 40px;
         }
 
-        . spinner-loading {
+        .spinner-loading {
             border: 4px solid rgba(255,255,255,0.3);
             border-top: 4px solid white;
             border-radius: 50%;
@@ -320,7 +320,7 @@
         }
 
         @keyframes spin {
-            0% { transform:  rotate(0deg); }
+            0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
 
@@ -328,9 +328,9 @@
             background: #f8d7da;
             color: #721c24;
             padding: 20px;
-            border-radius:  10px;
+            border-radius: 10px;
             text-align: center;
-            margin:  20px 0;
+            margin: 20px 0;
         }
 
         .config-prompt {
@@ -353,7 +353,7 @@
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 1em;
-            margin:  10px 0;
+            margin: 10px 0;
         }
 
         .config-input:focus {
@@ -366,19 +366,19 @@
             bottom: 30px;
             right: 30px;
             background: #4CAF50;
-            color:  white;
+            color: white;
             padding: 15px 25px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             opacity: 0;
-            transform:  translateY(20px);
+            transform: translateY(20px);
             transition: all 0.3s ease;
             z-index: 1000;
         }
 
         .toast.show {
             opacity: 1;
-            transform:  translateY(0);
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -399,7 +399,7 @@
         <div id="configSection" class="config-prompt" style="display: none;">
             <h2>⚙️ Configuration Required</h2>
             <p>Please enter your Google Apps Script Web App URL:</p>
-            <input type="text" id="webAppUrlInput" class="config-input" placeholder="https://script.google.com/macros/s/... ">
+            <input type="text" id="webAppUrlInput" class="config-input" placeholder="https://script.google.com/macros/s/...">
             <button class="spin-btn" onclick="saveConfigAndLoad()">Save & Load Meals</button>
         </div>
 
@@ -414,10 +414,10 @@
                     <button class="filter-btn" data-filter="MealDB API" onclick="filterMeals('MealDB API')">
                         🌐 MealDB
                     </button>
-                    <button class="filter-btn" data-filter="ICA. se" onclick="filterMeals('ICA.se')">
+                    <button class="filter-btn" data-filter="ICA.se" onclick="filterMeals('ICA.se')">
                         🇸🇪 ICA
                     </button>
-                    <button class="filter-btn" data-filter="Hemköp. se" onclick="filterMeals('Hemköp.se')">
+                    <button class="filter-btn" data-filter="Hemköp.se" onclick="filterMeals('Hemköp.se')">
                         🛍️ Hemköp
                     </button>
                 </div>
@@ -433,7 +433,7 @@
                         <canvas id="wheelCanvas"></canvas>
                     </div>
                     <button class="spin-btn" id="spinBtn" onclick="spinWheel()">
-                        🎰 SPIN THE WHEEL! 
+                        🎰 SPIN THE WHEEL!
                     </button>
                 </div>
 
@@ -487,7 +487,7 @@
 
         // Wheel configuration
         const canvas = document.getElementById('wheelCanvas');
-        const ctx = canvas ?  canvas.getContext('2d') : null;
+        const ctx = canvas ? canvas.getContext('2d') : null;
         let rotation = 0;
         let targetRotation = 0;
 
@@ -531,15 +531,15 @@
                     filteredMeals = allMeals;
                     
                     document.getElementById('loadingSection').style.display = 'none';
-                    document. getElementById('mainSection').style.display = 'block';
+                    document.getElementById('mainSection').style.display = 'block';
                     
                     updateMealCount();
                     drawWheel();
                 } else {
-                    showError('No meals found in your database.  Please scrape some meals first! ');
+                    showError('No meals found in your database. Please scrape some meals first!');
                 }
             } catch (error) {
-                showError('Failed to load meals: ' + error. message);
+                showError('Failed to load meals: ' + error.message);
             }
         }
 
@@ -586,7 +586,7 @@
             const filterText = currentFilter === 'all' ? 'all sources' : currentFilter;
             
             document.getElementById('mealCountDisplay').textContent = 
-                `Showing ${filtered} meal${filtered !== 1 ? 's' :  ''} from ${filterText} (Total: ${total})`;
+                `Showing ${filtered} meal${filtered !== 1 ? 's' : ''} from ${filterText} (Total: ${total})`;
         }
 
         function drawWheel() {
@@ -613,7 +613,7 @@
                 const angle = index * sliceAngle;
                 
                 // Draw slice
-                ctx. beginPath();
+                ctx.beginPath();
                 ctx.moveTo(0, 0);
                 ctx.arc(0, 0, radius, angle, angle + sliceAngle);
                 ctx.closePath();
@@ -695,7 +695,7 @@
             const sliceAngle = (2 * Math.PI) / filteredMeals.length;
             
             // The pointer is at the top (12 o'clock position)
-            const normalizedRotation = (2 * Math.PI - (rotation % (2 * Math. PI))) % (2 * Math.PI);
+            const normalizedRotation = (2 * Math.PI - (rotation % (2 * Math.PI))) % (2 * Math.PI);
             const selectedIndex = Math.floor(normalizedRotation / sliceAngle) % filteredMeals.length;
             
             selectedMeal = filteredMeals[selectedIndex];
@@ -709,10 +709,10 @@
             
             const resultImage = document.getElementById('resultImage');
             if (selectedMeal.imageUrl) {
-                resultImage. src = selectedMeal.imageUrl;
-                resultImage.style. display = 'block';
+                resultImage.src = selectedMeal.imageUrl;
+                resultImage.style.display = 'block';
             } else {
-                resultImage. style.display = 'none';
+                resultImage.style.display = 'none';
             }
 
             setTimeout(() => {
@@ -731,10 +731,10 @@
             const btn = document.getElementById('addToPlannerBtn');
             const originalText = btn.innerHTML;
             btn.disabled = true;
-            btn.innerHTML = '⏳ Adding... ';
+            btn.innerHTML = '⏳ Adding...';
 
             try {
-                // Use GET request to avoid CORS preflight - NO SPACE after ? 
+                // Use GET request to avoid CORS preflight
                 const url = `${WEB_APP_URL}?action=addMealToPlanner&mealId=${selectedMeal.id}`;
                 
                 console.log('Calling URL:', url); // Debug log
@@ -755,10 +755,10 @@
                         showToast('✅ Meal added to planner!', 'success');
                     }
                 } else {
-                    showToast('❌ Failed:  ' + result.message, 'error');
+                    showToast('❌ Failed: ' + result.message, 'error');
                 }
             } catch (error) {
-                showToast('❌ Error:  ' + error.message, 'error');
+                showToast('❌ Error: ' + error.message, 'error');
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = originalText;
@@ -769,7 +769,7 @@
             const title = document.getElementById('resultTitle').textContent;
             const source = document.getElementById('resultSource').textContent;
             const description = document.getElementById('resultDescription').textContent;
-            const ingredients = document. getElementById('resultIngredients').textContent;
+            const ingredients = document.getElementById('resultIngredients').textContent;
             const instructions = document.getElementById('resultInstructions').textContent;
 
             const recipeText = `${title}\nSource: ${source}\n\n${description}\n\nIngredients:\n${ingredients}\n\nInstructions:\n${instructions}`;
@@ -785,7 +785,7 @@
             const toast = document.getElementById('toast');
             toast.textContent = message;
             toast.style.background = type === 'success' ? '#4CAF50' : '#ff6b6b';
-            toast. classList.add('show');
+            toast.classList.add('show');
 
             setTimeout(() => {
                 toast.classList.remove('show');
