@@ -32,7 +32,7 @@
 
         h1 {
             font-size: 3em;
-            margin-bottom: 10px;
+            margin-bottom:  10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
@@ -53,7 +53,7 @@
             background: rgba(255,255,255,0.3);
         }
 
-        .controls {
+        . controls {
             background: white;
             border-radius: 15px;
             padding: 20px;
@@ -73,10 +73,10 @@
         . filter-btn {
             padding: 10px 20px;
             border: 2px solid #667eea;
-            background: white;
+            background:  white;
             color: #667eea;
-            border-radius: 8px;
-            cursor: pointer;
+            border-radius:  8px;
+            cursor:  pointer;
             font-weight: 600;
             transition: all 0.3s;
         }
@@ -91,17 +91,17 @@
         }
 
         .meal-count-display {
-            text-align:  center;
+            text-align: center;
             color: #666;
             font-size: 0.9em;
             margin-top: 10px;
         }
 
-        . spinner-section {
+        .spinner-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
-            margin-bottom: 30px;
+            margin-bottom:  30px;
         }
 
         @media (max-width: 968px) {
@@ -125,7 +125,7 @@
             position: relative;
             width: 400px;
             height: 400px;
-            margin: 20px auto;
+            margin:  20px auto;
         }
 
         @media (max-width: 500px) {
@@ -150,7 +150,7 @@
             transform: translateX(-50%);
             width:  0;
             height: 0;
-            border-left:  20px solid transparent;
+            border-left: 20px solid transparent;
             border-right: 20px solid transparent;
             border-top: 30px solid #ff4757;
             filter: drop-shadow(0 3px 5px rgba(0,0,0,0.3));
@@ -163,10 +163,10 @@
             color: white;
             border: none;
             border-radius: 10px;
-            font-size:  1.2em;
+            font-size: 1.2em;
             font-weight: 600;
             cursor: pointer;
-            transition:  transform 0.2s, opacity 0.3s;
+            transition: transform 0.2s, opacity 0.3s;
             margin-top: 20px;
         }
 
@@ -261,27 +261,39 @@
         }
 
         .result-actions {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 15px;
             margin-top: 25px;
         }
 
-        . action-btn {
-            flex: 1;
-            padding:  12px 20px;
+        @media (max-width: 600px) {
+            .result-actions {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .action-btn {
+            padding: 12px 20px;
             border: none;
             border-radius: 8px;
             font-weight: 600;
             cursor:  pointer;
             transition: transform 0.2s;
+            font-size: 1em;
         }
 
-        .action-btn:hover {
-            transform:  translateY(-2px);
+        . action-btn:hover {
+            transform: translateY(-2px);
         }
 
         .btn-primary {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
             color: white;
         }
 
@@ -339,14 +351,34 @@
             max-width: 500px;
             padding: 12px;
             border: 2px solid #e0e0e0;
-            border-radius:  8px;
+            border-radius: 8px;
             font-size: 1em;
-            margin:  10px 0;
+            margin: 10px 0;
         }
 
         .config-input:focus {
             outline: none;
             border-color: #667eea;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4CAF50;
+            color:  white;
+            padding: 15px 25px;
+            border-radius:  10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast. show {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -427,14 +459,23 @@
                         <button class="action-btn btn-primary" onclick="spinWheel()">
                             🎰 Spin Again
                         </button>
+                        <button class="action-btn btn-success" id="addToPlannerBtn" onclick="addToPlanner()">
+                            💚 Add to Planner
+                        </button>
                         <button class="action-btn btn-secondary" onclick="copyRecipe()">
                             📋 Copy Recipe
                         </button>
+                        <a href="planner.html" class="action-btn btn-secondary" style="text-align: center; text-decoration: none; display: flex; align-items: center; justify-content: center;">
+                            📅 View Planner
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Toast notification -->
+    <div id="toast" class="toast"></div>
 
     <script>
         let WEB_APP_URL = localStorage.getItem('webAppUrl') || '';
@@ -442,6 +483,7 @@
         let filteredMeals = [];
         let currentFilter = 'all';
         let isSpinning = false;
+        let selectedMeal = null;
 
         // Wheel configuration
         const canvas = document.getElementById('wheelCanvas');
@@ -458,7 +500,7 @@
 
         // Initialize
         window.onload = function() {
-            if (!WEB_APP_URL) {
+            if (! WEB_APP_URL) {
                 document.getElementById('loadingSection').style.display = 'none';
                 document.getElementById('configSection').style.display = 'block';
             } else {
@@ -489,7 +531,7 @@
                     filteredMeals = allMeals;
                     
                     document.getElementById('loadingSection').style.display = 'none';
-                    document. getElementById('mainSection').style.display = 'block';
+                    document.getElementById('mainSection').style.display = 'block';
                     
                     updateMealCount();
                     drawWheel();
@@ -497,7 +539,7 @@
                     showError('No meals found in your database.  Please scrape some meals first! ');
                 }
             } catch (error) {
-                showError('Failed to load meals:  ' + error.message);
+                showError('Failed to load meals: ' + error.message);
             }
         }
 
@@ -572,8 +614,8 @@
                 
                 // Draw slice
                 ctx.beginPath();
-                ctx.moveTo(0, 0);
-                ctx. arc(0, 0, radius, angle, angle + sliceAngle);
+                ctx. moveTo(0, 0);
+                ctx.arc(0, 0, radius, angle, angle + sliceAngle);
                 ctx.closePath();
                 ctx.fillStyle = colors[index % colors.length];
                 ctx.fill();
@@ -590,8 +632,8 @@
                 ctx.shadowColor = 'rgba(0,0,0,0.5)';
                 ctx.shadowBlur = 3;
                 
-                const text = meal.name.length > 20 ? meal.name.substring(0, 20) + '...' : meal.name;
-                ctx.fillText(text, radius - 20, 5);
+                const text = meal.name. length > 20 ?  meal.name.substring(0, 20) + '...' : meal.name;
+                ctx. fillText(text, radius - 20, 5);
                 ctx.restore();
             });
 
@@ -617,7 +659,7 @@
             // Random spins (5-8 full rotations) plus random position
             const spins = 5 + Math.random() * 3;
             const randomAngle = Math.random() * (2 * Math.PI);
-            targetRotation = rotation + (spins * 2 * Math.PI) + randomAngle;
+            targetRotation = rotation + (spins * 2 * Math. PI) + randomAngle;
 
             animateWheel();
         }
@@ -653,16 +695,15 @@
             const sliceAngle = (2 * Math.PI) / filteredMeals.length;
             
             // The pointer is at the top (12 o'clock position)
-            // We need to find which slice is at the top after rotation
             const normalizedRotation = (2 * Math.PI - (rotation % (2 * Math. PI))) % (2 * Math.PI);
             const selectedIndex = Math.floor(normalizedRotation / sliceAngle) % filteredMeals.length;
             
-            const selectedMeal = filteredMeals[selectedIndex];
+            selectedMeal = filteredMeals[selectedIndex];
             
             // Display result
-            document.getElementById('resultTitle').textContent = selectedMeal. name;
+            document.getElementById('resultTitle').textContent = selectedMeal.name;
             document.getElementById('resultSource').textContent = selectedMeal.source;
-            document. getElementById('resultDescription').textContent = selectedMeal.description;
+            document.getElementById('resultDescription').textContent = selectedMeal.description;
             document.getElementById('resultIngredients').textContent = selectedMeal.ingredients || 'No ingredients listed';
             document.getElementById('resultInstructions').textContent = selectedMeal.instructions || 'No instructions provided';
             
@@ -681,6 +722,46 @@
             }, 500);
         }
 
+        async function addToPlanner() {
+            if (!selectedMeal) {
+                showToast('Please spin the wheel first!', 'error');
+                return;
+            }
+
+            const btn = document.getElementById('addToPlannerBtn');
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '⏳ Adding... ';
+
+            try {
+                const response = await fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        action: 'addMealToPlanner',
+                        mealId: selectedMeal.id
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    if (result.alreadyExists) {
+                        showToast('✅ Meal already in planner!', 'success');
+                    } else {
+                        showToast('✅ Meal added to planner!', 'success');
+                    }
+                } else {
+                    showToast('❌ Failed:  ' + result.message, 'error');
+                }
+            } catch (error) {
+                showToast('❌ Error:  ' + error.message, 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
+        }
+
         function copyRecipe() {
             const title = document.getElementById('resultTitle').textContent;
             const source = document.getElementById('resultSource').textContent;
@@ -691,10 +772,21 @@
             const recipeText = `${title}\nSource: ${source}\n\n${description}\n\nIngredients:\n${ingredients}\n\nInstructions:\n${instructions}`;
 
             navigator.clipboard.writeText(recipeText).then(() => {
-                alert('✅ Recipe copied to clipboard!');
+                showToast('✅ Recipe copied to clipboard!', 'success');
             }).catch(() => {
-                alert('❌ Failed to copy recipe');
+                showToast('❌ Failed to copy recipe', 'error');
             });
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.background = type === 'success' ?  '#4CAF50' : '#ff6b6b';
+            toast. classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
         }
 
         // Redraw wheel on window resize
