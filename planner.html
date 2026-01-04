@@ -52,7 +52,7 @@
             background: rgba(255,255,255,0.3);
         }
 
-        . planner-layout {
+        .planner-layout {
             display: block;
         }
 
@@ -64,7 +64,7 @@
             margin-bottom: 20px;
         }
 
-        . weekly-calendar h2 {
+        .weekly-calendar h2 {
             color: #667eea;
             margin-bottom: 20px;
             text-align: center;
@@ -84,7 +84,7 @@
 
         @media (max-width: 768px) {
             .days-grid {
-                grid-template-columns:  repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -103,13 +103,13 @@
             transition: background 0.3s, border-color 0.3s;
         }
 
-        .day-slot. drag-over {
-            background:  #e8f5e9;
+        .day-slot.drag-over {
+            background: #e8f5e9;
             border-color: #4caf50;
         }
 
         .day-slot-header {
-            font-weight:  600;
+            font-weight: 600;
             color: #667eea;
             margin-bottom: 10px;
             font-size: 1.1em;
@@ -122,16 +122,16 @@
             background: #667eea;
             color: white;
             padding: 2px 8px;
-            border-radius:  10px;
-            font-size:  0.75em;
+            border-radius: 10px;
+            font-size: 0.75em;
         }
 
-        . day-meal {
+        .day-meal {
             background: white;
             border-radius: 8px;
             padding: 10px;
-            margin-bottom:  8px;
-            box-shadow:  0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             border-left: 4px solid #667eea;
             transition: transform 0.2s, box-shadow 0.2s;
         }
@@ -141,7 +141,7 @@
             transform: translateX(3px);
         }
 
-        . day-meal[draggable="true"] {
+        .day-meal[draggable="true"] {
             cursor: grab;
         }
 
@@ -169,12 +169,12 @@
             margin-bottom: 8px;
         }
 
-        . day-meal-remove {
+        .day-meal-remove {
             display: inline-block;
             width: 100%;
             padding: 6px 8px;
             background: #ff6b6b;
-            color:  white;
+            color: white;
             border: none;
             border-radius: 5px;
             font-size: 0.75em;
@@ -186,11 +186,11 @@
             background: #ff5252;
         }
 
-        . i-like-section {
+        .i-like-section {
             background: white;
             border-radius: 15px;
             padding: 20px;
-            box-shadow:  0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         .i-like-section h2 {
@@ -205,9 +205,9 @@
         .i-like-count {
             background: #667eea;
             color: white;
-            padding:  3px 10px;
-            border-radius:  15px;
-            font-size:  0.8em;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
         }
 
         #iLikeBox {
@@ -239,7 +239,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .meal-card. dragging {
+        .meal-card.dragging {
             opacity: 0.5;
             transform: rotate(3deg);
             cursor: grabbing;
@@ -263,7 +263,7 @@
             min-height: 35px;
         }
 
-        . meal-card-source {
+        .meal-card-source {
             font-size: 0.7em;
             color: #666;
             background: #e0e0e0;
@@ -273,9 +273,9 @@
             margin-bottom: 8px;
         }
 
-        . meal-card-btn {
+        .meal-card-btn {
             width: 100%;
-            padding:  6px 10px;
+            padding: 6px 10px;
             border: none;
             border-radius: 5px;
             font-size: 0.75em;
@@ -298,12 +298,12 @@
             left: 0;
             top: 0;
             width: 100%;
-            height:  100%;
+            height: 100%;
             background: rgba(0, 0, 0, 0.7);
             overflow-y: auto;
         }
 
-        .modal. show {
+        .modal.show {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -324,7 +324,7 @@
         @keyframes slideDown {
             from {
                 opacity: 0;
-                transform:  translateY(-50px);
+                transform: translateY(-50px);
             }
             to {
                 opacity: 1;
@@ -343,7 +343,7 @@
         .modal-title {
             font-size: 1.8em;
             color: #667eea;
-            margin:  0;
+            margin: 0;
         }
 
         .modal-close {
@@ -369,18 +369,18 @@
         .modal-image {
             width: 100%;
             max-height: 300px;
-            object-fit:  cover;
-            border-radius:  10px;
+            object-fit: cover;
+            border-radius: 10px;
             margin-bottom: 20px;
         }
 
-        . modal-source {
+        .modal-source {
             display: inline-block;
             padding: 5px 15px;
             background: #667eea;
             color: white;
             border-radius: 20px;
-            font-size:  0.9em;
+            font-size: 0.9em;
             margin-bottom: 15px;
         }
 
@@ -395,13 +395,13 @@
             margin-bottom: 25px;
         }
 
-        . modal-section h3 {
+        .modal-section h3 {
             color: #667eea;
             margin-bottom: 10px;
             font-size: 1.3em;
         }
 
-        . modal-section p {
+        .modal-section p {
             color: #555;
             line-height: 1.8;
             white-space: pre-wrap;
@@ -414,7 +414,7 @@
             padding: 40px;
         }
 
-        . spinner-loading {
+        .spinner-loading {
             border: 4px solid rgba(255,255,255,0.3);
             border-top: 4px solid white;
             border-radius: 50%;
@@ -437,13 +437,13 @@
             grid-column: 1 / -1;
         }
 
-        . error-message {
+        .error-message {
             background: #f8d7da;
             color: #721c24;
             padding: 20px;
-            border-radius:  10px;
+            border-radius: 10px;
             text-align: center;
-            margin:  20px 0;
+            margin: 20px 0;
         }
 
         .config-prompt {
@@ -464,9 +464,9 @@
             max-width: 500px;
             padding: 12px;
             border: 2px solid #e0e0e0;
-            border-radius:  8px;
+            border-radius: 8px;
             font-size: 1em;
-            margin:  10px 0;
+            margin: 10px 0;
         }
 
         .config-input:focus {
@@ -483,7 +483,7 @@
             font-size: 1em;
             font-weight: 600;
             cursor: pointer;
-            transition:  opacity 0.3s;
+            transition: opacity 0.3s;
         }
 
         .btn-primary:hover {
@@ -497,7 +497,7 @@
     <div class="container">
         <header>
             <h1>📅 Weekly Meal Planner</h1>
-            <p class="subtitle">Plan your week with delicious meals! </p>
+            <p class="subtitle">Plan your week with delicious meals!</p>
         </header>
 
         <div id="loadingSection" class="loading">
@@ -508,7 +508,7 @@
         <div id="configSection" class="config-prompt" style="display: none;">
             <h2>⚙️ Configuration Required</h2>
             <p>Please enter your Google Apps Script Web App URL:</p>
-            <input type="text" id="webAppUrlInput" class="config-input" placeholder="https://script.google.com/macros/s/... ">
+            <input type="text" id="webAppUrlInput" class="config-input" placeholder="https://script.google.com/macros/s/...">
             <button class="btn-primary" onclick="saveConfigAndLoad()">Save & Load Planner</button>
         </div>
 
@@ -584,7 +584,7 @@
                 </h2>
                 <div id="iLikeBox">
                     <div class="empty-state">
-                        No meals yet!  Add meals from the spinner or meal database.
+                        No meals yet! Add meals from the spinner or meal database.
                     </div>
                 </div>
             </div>
@@ -599,7 +599,7 @@
                 <button class="modal-close" onclick="closeModal()">&times;</button>
             </div>
             <div class="modal-body">
-                <img id="modalImage" class="modal-image" style="display:  none;">
+                <img id="modalImage" class="modal-image" style="display: none;">
                 <span class="modal-source" id="modalSource"></span>
                 <p class="modal-description" id="modalDescription"></p>
                 <div class="modal-section">
@@ -650,17 +650,17 @@
             try {
                 await Promise.all([loadAllMeals(), loadPlanner()]);
             } catch (error) {
-                showError('Failed to load data:  ' + error.message);
+                showError('Failed to load data: ' + error.message);
             }
         }
 
         async function loadAllMeals() {
             try {
-                const response = await fetch(WEB_APP_URL + '? action=getMeals');
+                const response = await fetch(WEB_APP_URL + '?action=getMeals');
                 const data = await response.json();
                 if (data.meals) {
                     allMealsData = data.meals;
-                    console.log('All meals loaded:', allMealsData. length);
+                    console.log('All meals loaded:', allMealsData.length);
                     console.log('First meal:', allMealsData[0]);
                 }
             } catch (error) {
@@ -670,7 +670,7 @@
 
         async function loadPlanner() {
             try {
-                const response = await fetch(WEB_APP_URL + '? action=getPlanner');
+                const response = await fetch(WEB_APP_URL + '?action=getPlanner');
                 const data = await response.json();
                 
                 console.log('Planner data loaded:', data);
@@ -679,14 +679,14 @@
                     plannerData = data.planner;
                     
                     document.getElementById('loadingSection').style.display = 'none';
-                    document. getElementById('mainSection').style.display = 'block';
+                    document.getElementById('mainSection').style.display = 'block';
                     
                     renderPlanner();
                 } else {
                     showError('Failed to load planner: ' + data.message);
                 }
             } catch (error) {
-                showError('Failed to load planner:  ' + error.message);
+                showError('Failed to load planner: ' + error.message);
             }
         }
 
@@ -714,8 +714,8 @@
             
             console.log('Assigned meal IDs:', assignedMealIds);
             
-            const likedMeals = plannerData. filter(m => 
-                m.status === 'liked' && ! assignedMealIds.includes(m.mealId)
+            const likedMeals = plannerData.filter(m => 
+                m.status === 'liked' && !assignedMealIds.includes(m.mealId)
             );
             
             const iLikeBox = document.getElementById('iLikeBox');
@@ -741,7 +741,7 @@
                 });
             }
             
-            document.getElementById('iLikeCount').textContent = likedMeals. length;
+            document.getElementById('iLikeCount').textContent = likedMeals.length;
 
             days.forEach(day => {
                 const dayMeals = plannerData.filter(m => m.assignedDay === day && m.status === 'assigned');
@@ -750,7 +750,7 @@
                 if (dayMeals.length === 0) {
                     dayContainer.innerHTML = '<div class="empty-state" style="font-size: 0.85em; padding: 20px;">Drag meals here</div>';
                 } else {
-                    dayContainer. innerHTML = dayMeals.map(meal => `
+                    dayContainer.innerHTML = dayMeals.map(meal => `
                         <div class="day-meal" draggable="true" data-meal-id="${meal.mealId}" data-from-day="${day}">
                             <div class="day-meal-name" data-meal-id="${meal.mealId}">${meal.mealName}</div>
                             <div class="day-meal-source">${meal.source}</div>
@@ -766,10 +766,10 @@
                     });
                     
                     dayContainer.querySelectorAll('.day-meal-name').forEach(nameEl => {
-                        nameEl. addEventListener('click', function(e) {
-                            e. stopPropagation();
-                            const mealId = this. getAttribute('data-meal-id');
-                            console.log('Meal name clicked!  MealId:', mealId);
+                        nameEl.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            const mealId = this.getAttribute('data-meal-id');
+                            console.log('Meal name clicked! MealId:', mealId);
                             console.log('All meals count:', allMealsData.length);
                             showRecipe(parseInt(mealId));
                         });
@@ -801,13 +801,13 @@
             
             const meal = allMealsData.find(m => {
                 console.log('Comparing:', m.id, '(type:', typeof m.id, ') with', mealId, '(type:', typeof mealId, ')');
-                return m. id == mealId;
+                return m.id == mealId;
             });
             
             console.log('Found meal:', meal);
             
-            if (! meal) {
-                alert('Recipe not found!  MealId: ' + mealId + ', Total meals: ' + allMealsData.length);
+            if (!meal) {
+                alert('Recipe not found! MealId: ' + mealId + ', Total meals: ' + allMealsData.length);
                 return;
             }
 
@@ -819,8 +819,8 @@
 
             const modalImage = document.getElementById('modalImage');
             if (meal.imageUrl) {
-                modalImage.src = meal. imageUrl;
-                modalImage. style.display = 'block';
+                modalImage.src = meal.imageUrl;
+                modalImage.style.display = 'block';
             } else {
                 modalImage.style.display = 'none';
             }
@@ -863,16 +863,16 @@
         function dragStartFromDay(event) {
             isDragging = true;
             const mealId = event.currentTarget.getAttribute('data-meal-id');
-            const fromDay = event.currentTarget. getAttribute('data-from-day');
+            const fromDay = event.currentTarget.getAttribute('data-from-day');
             
             draggedMealId = mealId;
             draggedFromDay = fromDay;
             
-            event.currentTarget.classList. add('dragging');
+            event.currentTarget.classList.add('dragging');
             console.log('Dragging meal from day:', draggedMealId, draggedFromDay);
             
-            event.dataTransfer. effectAllowed = 'move';
-            event.dataTransfer. setData('text/plain', mealId);
+            event.dataTransfer.effectAllowed = 'move';
+            event.dataTransfer.setData('text/plain', mealId);
         }
 
         function dragEnd(event) {
@@ -895,14 +895,14 @@
         function dragLeave(event) {
             const daySlot = event.currentTarget;
             if (daySlot.classList.contains('day-slot')) {
-                daySlot. classList.remove('drag-over');
+                daySlot.classList.remove('drag-over');
             }
         }
 
         async function drop(event) {
-            event. preventDefault();
+            event.preventDefault();
             
-            const daySlot = event. currentTarget;
+            const daySlot = event.currentTarget;
             if (daySlot.classList.contains('day-slot')) {
                 daySlot.classList.remove('drag-over');
             }
@@ -911,7 +911,7 @@
             
             console.log('Dropped on day:', day, 'Meal ID:', draggedMealId, 'From day:', draggedFromDay);
             
-            if (! draggedMealId || !day) {
+            if (!draggedMealId || !day) {
                 console.error('Missing draggedMealId or day');
                 return;
             }
@@ -925,10 +925,10 @@
             const result = await assignMealToDayAPI(draggedMealId, day);
             
             if (result.success) {
-                console.log('Successfully assigned! ');
+                console.log('Successfully assigned!');
                 await loadData();
             } else {
-                alert('Failed to assign meal:  ' + result.message);
+                alert('Failed to assign meal: ' + result.message);
             }
 
             draggedMealId = null;
@@ -937,7 +937,7 @@
 
         async function assignMealToDayAPI(mealId, day) {
             try {
-                console.log('API call:  assignMealToDay', mealId, day);
+                console.log('API call: assignMealToDay', mealId, day);
                 const url = `${WEB_APP_URL}?action=assignMealToDay&mealId=${mealId}&day=${encodeURIComponent(day)}`;
                 
                 console.log('Calling URL:', url);
@@ -960,7 +960,7 @@
             
             const result = await removeMealFromDayAPI(mealId, day);
             
-            if (result. success) {
+            if (result.success) {
                 await loadData();
             } else {
                 alert('Failed to remove meal: ' + result.message);
@@ -987,7 +987,7 @@
             if (!confirm('Remove this meal from your planner completely?')) return;
             
             try {
-                const url = `${WEB_APP_URL}? action=removeMealFromPlanner&mealId=${mealId}`;
+                const url = `${WEB_APP_URL}?action=removeMealFromPlanner&mealId=${mealId}`;
                 
                 console.log('Removing completely URL:', url);
                 
@@ -1004,7 +1004,7 @@
                     alert('Failed to remove meal: ' + result.message);
                 }
             } catch (error) {
-                alert('Error:  ' + error.message);
+                alert('Error: ' + error.message);
             }
         }
     </script>
