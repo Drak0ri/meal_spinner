@@ -70,7 +70,7 @@
         .card p {
             color: #666;
             margin-bottom: 20px;
-            line-height: 1.6;
+            line-height:  1.6;
         }
 
         .btn {
@@ -162,7 +162,7 @@
             background: white;
             border-radius: 15px;
             padding: 30px;
-            margin-bottom: 20px;
+            margin-bottom:  20px;
             box-shadow:  0 10px 30px rgba(0,0,0,0.2);
         }
 
@@ -254,12 +254,13 @@
                 <div id="statusICA" class="status"></div>
             </div>
 
-            <div class="card coming-soon">
-                <h2>🛍️ Hemköp Recipes <span class="badge soon">SOON</span></h2>
-                <p>Get meal ideas from Hemköp with current deals and promotions on ingredients.</p>
-                <button class="btn" disabled>
-                    Scrape Hemköp (Coming Soon)
+            <div class="card">
+                <h2>🛍️ Hemköp Recipes <span class="badge">ACTIVE</span></h2>
+                <p>Get authentic Swedish meal ideas from Hemköp with ingredients and cooking instructions.</p>
+                <button class="btn" onclick="scrapeMeals('scrapeHemkop')" id="btnHemkop">
+                    Scrape 10 Meals (Hemköp)
                 </button>
+                <div id="statusHemkop" class="status"></div>
             </div>
 
             <div class="card coming-soon">
@@ -334,15 +335,14 @@
         // Scrape meals function
         async function scrapeMeals(action) {
             if (!WEB_APP_URL) {
-                const statusId = action === 'scrapeMealDB' ? 'statusMealDB' : 'statusICA';
+                const statusId = getStatusId(action);
                 showStatus(statusId, '❌ Please configure your Web App URL first! ', 'error');
                 return;
             }
 
-            const btnId = action === 'scrapeMealDB' ? 'btnMealDB' : 'btnICA';
-            const statusId = action === 'scrapeMealDB' ? 'statusMealDB' : 'statusICA';
+            const btnId = getBtnId(action);
+            const statusId = getStatusId(action);
             const btn = document.getElementById(btnId);
-            const statusDiv = document.getElementById(statusId);
             
             const originalText = btn.innerHTML;
             
@@ -350,22 +350,21 @@
             btn.disabled = true;
             btn.innerHTML = 'Scraping...  <span class="spinner"></span>';
             
-            const sourceName = action === 'scrapeMealDB' ? 'MealDB' : 'ICA. se';
+            const sourceName = getSourceName(action);
             showStatus(statusId, `⏳ Fetching meals from ${sourceName}... `, 'info');
 
             try {
                 const response = await fetch(WEB_APP_URL, {
                     method: 'POST',
-                    mode: 'no-cors', // Required for Google Apps Script
-                    headers: {
-                        'Content-Type':  'application/json',
+                    mode: 'no-cors',
+                    headers:  {
+                        'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ action: action })
+                    body:  JSON.stringify({ action:  action })
                 });
 
-                // Note: With no-cors mode, we can't read the response
-                // So we'll wait a bit and then check the meal count
-                const waitTime = action === 'scrapeICA' ? 15000 : 5000; // ICA takes longer
+                // Wait for scraping to complete (varies by source)
+                const waitTime = action === 'scrapeMealDB' ? 5000 : 15000;
                 await new Promise(resolve => setTimeout(resolve, waitTime));
                 
                 showStatus(statusId, '✅ Scraping completed!  Check your Google Sheet.', 'success');
@@ -379,13 +378,37 @@
             }
         }
 
+        // Helper function to get button ID
+        function getBtnId(action) {
+            if (action === 'scrapeMealDB') return 'btnMealDB';
+            if (action === 'scrapeICA') return 'btnICA';
+            if (action === 'scrapeHemkop') return 'btnHemkop';
+            return 'btn';
+        }
+
+        // Helper function to get status div ID
+        function getStatusId(action) {
+            if (action === 'scrapeMealDB') return 'statusMealDB';
+            if (action === 'scrapeICA') return 'statusICA';
+            if (action === 'scrapeHemkop') return 'statusHemkop';
+            return 'status';
+        }
+
+        // Helper function to get source name
+        function getSourceName(action) {
+            if (action === 'scrapeMealDB') return 'MealDB';
+            if (action === 'scrapeICA') return 'ICA.se';
+            if (action === 'scrapeHemkop') return 'Hemköp';
+            return 'source';
+        }
+
         // Load meal count
         async function loadMealCount() {
             if (!WEB_APP_URL) return;
 
             try {
                 const response = await fetch(WEB_APP_URL + '?action=getMeals');
-                const data = await response. json();
+                const data = await response.json();
                 
                 const count = data.meals ?  data.meals.length : 0;
                 document.getElementById('mealCount').innerHTML = 
