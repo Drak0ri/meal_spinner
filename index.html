@@ -6,9 +6,9 @@
     <title>Meal Spinner - Dashboard</title>
     <style>
         * {
-            margin:  0;
+            margin: 0;
             padding: 0;
-            box-sizing:  border-box;
+            box-sizing: border-box;
         }
 
         body {
@@ -20,7 +20,7 @@
 
         .container {
             max-width: 1200px;
-            margin:  0 auto;
+            margin: 0 auto;
         }
 
         header {
@@ -32,7 +32,7 @@
 
         h1 {
             font-size: 3em;
-            margin-bottom:  10px;
+            margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
@@ -45,14 +45,14 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
-            margin-bottom:  40px;
+            margin-bottom: 40px;
         }
 
         .card {
             background: white;
-            border-radius:  15px;
+            border-radius: 15px;
             padding: 30px;
-            box-shadow:  0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -62,12 +62,12 @@
         }
 
         .card h2 {
-            color:  #667eea;
+            color: #667eea;
             margin-bottom: 15px;
-            font-size:  1.5em;
+            font-size: 1.5em;
         }
 
-        . card p {
+        .card p {
             color: #666;
             margin-bottom: 20px;
             line-height: 1.6;
@@ -95,7 +95,7 @@
             transform: scale(1.02);
         }
 
-        .btn: active {
+        .btn:active {
             transform: scale(0.98);
         }
 
@@ -105,7 +105,7 @@
             opacity: 0.6;
         }
 
-        .btn. secondary {
+        .btn.secondary {
             background: #e0e0e0;
             color: #666;
         }
@@ -114,13 +114,13 @@
             margin-top: 15px;
             padding: 10px;
             border-radius: 8px;
-            font-size:  0.9em;
+            font-size: 0.9em;
             display: none;
         }
 
         .status.success {
             background: #d4edda;
-            color:  #155724;
+            color: #155724;
             border: 1px solid #c3e6cb;
             display: block;
         }
@@ -136,10 +136,10 @@
             background: #d1ecf1;
             color: #0c5460;
             border: 1px solid #bee5eb;
-            display:  block;
+            display: block;
         }
 
-        . coming-soon {
+        .coming-soon {
             opacity: 0.6;
         }
 
@@ -147,9 +147,9 @@
             display: inline-block;
             padding: 5px 10px;
             background: #4CAF50;
-            color:  white;
-            border-radius:  5px;
-            font-size:  0.8em;
+            color: white;
+            border-radius: 5px;
+            font-size: 0.8em;
             font-weight: bold;
             margin-left: 10px;
         }
@@ -163,8 +163,8 @@
             background: white;
             border-radius: 15px;
             padding: 30px;
-            margin-bottom:  20px;
-            box-shadow:  0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         .config-section h3 {
@@ -174,14 +174,14 @@
 
         .config-input {
             width: 100%;
-            padding:  10px;
+            padding: 10px;
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 1em;
             margin-bottom: 10px;
         }
 
-        . config-input:focus {
+        .config-input:focus {
             outline: none;
             border-color: #667eea;
         }
@@ -203,7 +203,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        . meal-count {
+        .meal-count {
             text-align: center;
             color: white;
             font-size: 1.5em;
@@ -239,7 +239,7 @@
         <div class="dashboard">
             <div class="card">
                 <h2>🌐 MealDB API <span class="badge">ACTIVE</span></h2>
-                <p>Scrape 10 random healthy meals from the MealDB database.  Each click fetches unique meals. </p>
+                <p>Scrape 10 random healthy meals from the MealDB database. Each click fetches unique meals.</p>
                 <button class="btn" onclick="scrapeMeals('scrapeMealDB')" id="btnMealDB">
                     Scrape 10 Meals (MealDB)
                 </button>
@@ -266,7 +266,7 @@
 
             <div class="card coming-soon">
                 <h2>🏪 Willys Recipes <span class="badge soon">SOON</span></h2>
-                <p>Discover budget-friendly meal options from Willys with price comparisons. </p>
+                <p>Discover budget-friendly meal options from Willys with price comparisons.</p>
                 <button class="btn" disabled>
                     Scrape Willys (Coming Soon)
                 </button>
@@ -285,23 +285,23 @@
 
             <div class="card">
                 <h2>📅 Weekly Meal Planner <span class="badge">ACTIVE</span></h2>
-                <p>Plan your weekly meals by selecting from your database. Drag and drop meals to specific days. </p>
+                <p>Plan your weekly meals by selecting from your database. Drag and drop meals to specific days.</p>
                 <a href="planner.html" class="btn">
                     Open Planner
                 </a>
             </div>
 
-            <div class="card coming-soon">
-                <h2>📊 View Database <span class="badge soon">SOON</span></h2>
-                <p>Browse all scraped meals, filter by source, and manage your meal collection.</p>
-                <button class="btn secondary" disabled>
+            <div class="card">
+                <h2>📊 View Database <span class="badge">ACTIVE</span></h2>
+                <p>Browse all scraped meals, filter by source, search, and manage your meal collection.</p>
+                <a href="database.html" class="btn">
                     View All Meals
-                </button>
+                </a>
             </div>
         </div>
 
         <div class="meal-count" id="mealCount">
-            Database:  Loading... 
+            Database: Loading...
         </div>
     </div>
 
@@ -322,11 +322,11 @@
 
         // Save configuration
         function saveConfig() {
-            const url = document. getElementById('webAppUrl').value.trim();
+            const url = document.getElementById('webAppUrl').value.trim();
             if (url) {
                 localStorage.setItem('webAppUrl', url);
                 WEB_APP_URL = url;
-                showStatus('configStatus', '✅ Configuration saved successfully! ', 'success');
+                showStatus('configStatus', '✅ Configuration saved successfully!', 'success');
                 loadMealCount();
             } else {
                 showStatus('configStatus', '❌ Please enter a valid URL', 'error');
@@ -337,7 +337,7 @@
         async function scrapeMeals(action) {
             if (!WEB_APP_URL) {
                 const statusId = getStatusId(action);
-                showStatus(statusId, '❌ Please configure your Web App URL first! ', 'error');
+                showStatus(statusId, '❌ Please configure your Web App URL first!', 'error');
                 return;
             }
 
@@ -352,7 +352,7 @@
             btn.innerHTML = 'Scraping... <span class="spinner"></span>';
             
             const sourceName = getSourceName(action);
-            showStatus(statusId, `⏳ Fetching meals from ${sourceName}... `, 'info');
+            showStatus(statusId, `⏳ Fetching meals from ${sourceName}...`, 'info');
 
             try {
                 const response = await fetch(WEB_APP_URL, {
@@ -368,11 +368,11 @@
                 const waitTime = action === 'scrapeMealDB' ? 5000 : 15000;
                 await new Promise(resolve => setTimeout(resolve, waitTime));
                 
-                showStatus(statusId, '✅ Scraping completed!  Check your Google Sheet. ', 'success');
+                showStatus(statusId, '✅ Scraping completed! Check your Google Sheet.', 'success');
                 loadMealCount();
 
             } catch (error) {
-                showStatus(statusId, '❌ Error:  ' + error.message, 'error');
+                showStatus(statusId, '❌ Error: ' + error.message, 'error');
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = originalText;
@@ -398,7 +398,7 @@
         // Helper function to get source name
         function getSourceName(action) {
             if (action === 'scrapeMealDB') return 'MealDB';
-            if (action === 'scrapeICA') return 'ICA. se';
+            if (action === 'scrapeICA') return 'ICA.se';
             if (action === 'scrapeHemkop') return 'Hemköp';
             return 'source';
         }
@@ -408,10 +408,10 @@
             if (!WEB_APP_URL) return;
 
             try {
-                const response = await fetch(WEB_APP_URL + '? action=getMeals');
+                const response = await fetch(WEB_APP_URL + '?action=getMeals');
                 const data = await response.json();
                 
-                const count = data.meals ?  data.meals.length : 0;
+                const count = data.meals ? data.meals.length : 0;
                 document.getElementById('mealCount').innerHTML = 
                     `📊 Database: <strong>${count} meals</strong>`;
             } catch (error) {
