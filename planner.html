@@ -132,13 +132,12 @@
             padding: 10px;
             margin-bottom: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            border-left: 4px solid #667eea;
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .day-meal:hover {
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            transform: translateX(3px);
+            transform: translateY(-2px);
         }
 
         .day-meal[draggable="true"] {
@@ -149,13 +148,22 @@
             cursor: grabbing;
         }
 
+        .day-meal-image {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+
         .day-meal-name {
             font-weight: 600;
             color: #333;
-            font-size: 0.9em;
+            font-size: 0.85em;
             margin-bottom: 5px;
             cursor: pointer;
             transition: color 0.2s;
+            line-height: 1.3;
         }
 
         .day-meal-name:hover {
@@ -164,8 +172,12 @@
         }
 
         .day-meal-source {
-            font-size: 0.75em;
+            font-size: 0.7em;
             color: #666;
+            background: #e0e0e0;
+            padding: 2px 6px;
+            border-radius: 8px;
+            display: inline-block;
             margin-bottom: 8px;
         }
 
@@ -752,8 +764,9 @@
                 } else {
                     dayContainer.innerHTML = dayMeals.map(meal => `
                         <div class="day-meal" draggable="true" data-meal-id="${meal.mealId}" data-from-day="${day}">
+                            ${meal.imageUrl ? `<img src="${meal.imageUrl}" class="day-meal-image" alt="${meal.mealName}">` : ''}
                             <div class="day-meal-name" data-meal-id="${meal.mealId}">${meal.mealName}</div>
-                            <div class="day-meal-source">${meal.source}</div>
+                            <span class="day-meal-source">${meal.source}</span>
                             <button class="day-meal-remove" onclick="event.stopPropagation(); removeMealFromDay(${meal.mealId}, '${day}')">
                                 ← Back to I Like
                             </button>
