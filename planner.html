@@ -64,7 +64,7 @@
             margin-bottom: 20px;
         }
 
-        .weekly-calendar h2 {
+        . weekly-calendar h2 {
             color: #667eea;
             margin-bottom: 20px;
             text-align: center;
@@ -84,7 +84,7 @@
 
         @media (max-width: 768px) {
             .days-grid {
-                grid-template-columns:  repeat(2, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -122,7 +122,7 @@
             background: #667eea;
             color: white;
             padding: 2px 8px;
-            border-radius:  10px;
+            border-radius: 10px;
             font-size:  0.75em;
         }
 
@@ -130,7 +130,7 @@
             background: white;
             border-radius: 8px;
             padding: 10px;
-            margin-bottom: 8px;
+            margin-bottom:  8px;
             cursor: pointer;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             border-left: 4px solid #667eea;
@@ -201,7 +201,7 @@
             color: white;
             padding: 3px 10px;
             border-radius:  15px;
-            font-size: 0.8em;
+            font-size:  0.8em;
         }
 
         #iLikeBox {
@@ -232,7 +232,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .meal-card: active {
+        .meal-card:active {
             cursor: grabbing;
         }
 
@@ -249,7 +249,7 @@
             margin-bottom: 10px;
         }
 
-        . meal-card-name {
+        .meal-card-name {
             font-weight: 600;
             color: #333;
             margin-bottom: 5px;
@@ -281,10 +281,10 @@
         }
 
         .meal-card-btn:hover {
-            background: #ff5252;
+            background:  #ff5252;
         }
 
-        . modal {
+        .modal {
             display: none;
             position: fixed;
             z-index: 1000;
@@ -341,9 +341,9 @@
 
         .modal-close {
             background: none;
-            border: none;
-            font-size: 2em;
-            cursor: pointer;
+            border:  none;
+            font-size:  2em;
+            cursor:  pointer;
             color: #999;
             line-height: 1;
             padding: 0;
@@ -363,7 +363,7 @@
             width: 100%;
             max-height: 300px;
             object-fit:  cover;
-            border-radius:  10px;
+            border-radius: 10px;
             margin-bottom: 20px;
         }
 
@@ -377,7 +377,7 @@
             margin-bottom: 15px;
         }
 
-        . modal-description {
+        .modal-description {
             color: #666;
             font-style: italic;
             margin-bottom: 20px;
@@ -391,7 +391,7 @@
         . modal-section h3 {
             color: #667eea;
             margin-bottom: 10px;
-            font-size: 1.3em;
+            font-size:  1.3em;
         }
 
         . modal-section p {
@@ -457,12 +457,12 @@
             max-width: 500px;
             padding: 12px;
             border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            border-radius:  8px;
             font-size: 1em;
             margin:  10px 0;
         }
 
-        .config-input:focus {
+        .config-input: focus {
             outline: none;
             border-color: #667eea;
         }
@@ -479,7 +479,7 @@
             transition:  opacity 0.3s;
         }
 
-        .btn-primary:hover {
+        . btn-primary:hover {
             opacity: 0.9;
         }
     </style>
@@ -501,7 +501,7 @@
         <div id="configSection" class="config-prompt" style="display: none;">
             <h2>⚙️ Configuration Required</h2>
             <p>Please enter your Google Apps Script Web App URL:</p>
-            <input type="text" id="webAppUrlInput" class="config-input" placeholder="https://script.google.com/macros/s/... ">
+            <input type="text" id="webAppUrlInput" class="config-input" placeholder="https://script.google.com/macros/s/...">
             <button class="btn-primary" onclick="saveConfigAndLoad()">Save & Load Planner</button>
         </div>
 
@@ -617,7 +617,7 @@
         const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
         window.onload = function() {
-            if (! WEB_APP_URL) {
+            if (!WEB_APP_URL) {
                 document.getElementById('loadingSection').style.display = 'none';
                 document.getElementById('configSection').style.display = 'block';
             } else {
@@ -655,12 +655,12 @@
 
         async function loadPlanner() {
             try {
-                const response = await fetch(WEB_APP_URL + '? action=getPlanner');
+                const response = await fetch(WEB_APP_URL + '?action=getPlanner');
                 const data = await response.json();
                 
                 console.log('Planner data loaded:', data);
                 
-                if (data.success) {
+                if (data. success) {
                     plannerData = data.planner;
                     
                     document.getElementById('loadingSection').style.display = 'none';
@@ -699,7 +699,7 @@
             console.log('Assigned meal IDs:', assignedMealIds);
             
             const likedMeals = plannerData. filter(m => 
-                m.status === 'liked' && ! assignedMealIds.includes(m.mealId)
+                m.status === 'liked' && !assignedMealIds.includes(m.mealId)
             );
             
             const iLikeBox = document.getElementById('iLikeBox');
@@ -762,7 +762,7 @@
         function showRecipe(mealId) {
             const meal = allMealsData.find(m => m.id == mealId);
             if (!meal) {
-                alert('Recipe not found!');
+                alert('Recipe not found! ');
                 return;
             }
 
@@ -789,7 +789,7 @@
 
         window.onclick = function(event) {
             const modal = document.getElementById('recipeModal');
-            if (event.target === modal) {
+            if (event. target === modal) {
                 closeModal();
             }
         }
@@ -822,8 +822,8 @@
             event.currentTarget.classList. add('dragging');
             console.log('Dragging meal from day:', draggedMealId, draggedFromDay);
             
-            event.dataTransfer. effectAllowed = 'move';
-            event.dataTransfer. setData('text/plain', mealId);
+            event.dataTransfer.effectAllowed = 'move';
+            event.dataTransfer.setData('text/plain', mealId);
         }
 
         function dragEnd(event) {
@@ -843,14 +843,14 @@
         function dragLeave(event) {
             const daySlot = event.currentTarget;
             if (daySlot.classList.contains('day-slot')) {
-                daySlot. classList.remove('drag-over');
+                daySlot.classList.remove('drag-over');
             }
         }
 
         async function drop(event) {
             event. preventDefault();
             
-            const daySlot = event.currentTarget;
+            const daySlot = event. currentTarget;
             if (daySlot.classList.contains('day-slot')) {
                 daySlot.classList.remove('drag-over');
             }
@@ -876,7 +876,7 @@
                 console.log('Successfully assigned! ');
                 await loadPlanner();
             } else {
-                alert('Failed to assign meal: ' + result.message);
+                alert('Failed to assign meal:  ' + result.message);
             }
 
             draggedMealId = null;
