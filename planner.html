@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background:  linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background:   linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -31,8 +31,8 @@
 
         h1 {
             font-size: 3em;
-            margin-bottom:  10px;
-            text-shadow:  2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom:   10px;
+            text-shadow:   2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .back-btn {
@@ -52,7 +52,7 @@
             background: rgba(255,255,255,0.3);
         }
 
-        .planner-layout {
+        . planner-layout {
             display: flex;
             flex-direction: column;
             gap: 20px;
@@ -87,7 +87,7 @@
 
         @media (max-width: 768px) {
             .days-grid {
-                grid-template-columns:  repeat(2, 1fr);
+                grid-template-columns:   repeat(2, 1fr);
             }
         }
 
@@ -106,8 +106,8 @@
             transition: background 0.3s, border-color 0.3s;
         }
 
-        .day-slot. drag-over {
-            background:  #e8f5e9;
+        .day-slot.  drag-over {
+            background:   #e8f5e9;
             border-color: #4caf50;
         }
 
@@ -125,15 +125,15 @@
             background: #667eea;
             color: white;
             padding: 2px 8px;
-            border-radius:  10px;
-            font-size:  0.75em;
+            border-radius:   10px;
+            font-size:   0.75em;
         }
 
-        . day-meal {
-            background:  white;
-            border-radius:  8px;
+        .  day-meal {
+            background:   white;
+            border-radius:   8px;
             padding: 10px;
-            margin-bottom:  8px;
+            margin-bottom:   8px;
             cursor: pointer;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             border-left: 4px solid #667eea;
@@ -145,16 +145,16 @@
             transform: translateX(3px);
         }
 
-        . day-meal[draggable="true"] {
+        .  day-meal[draggable="true"] {
             cursor: grab;
         }
 
-        .day-meal: active {
+        . day-meal:  active {
             cursor: grabbing;
         }
 
         .day-meal-name {
-            font-weight: 600;
+            font-weight:  600;
             color: #333;
             font-size: 0.9em;
             margin-bottom: 5px;
@@ -166,12 +166,12 @@
             margin-bottom: 8px;
         }
 
-        . day-meal-remove {
+        .  day-meal-remove {
             display: inline-block;
             width: 100%;
             padding: 6px 8px;
             background: #ff6b6b;
-            color:  white;
+            color:   white;
             border: none;
             border-radius: 5px;
             font-size: 0.75em;
@@ -179,12 +179,12 @@
             transition: background 0.2s;
         }
 
-        .day-meal-remove:hover {
+        . day-meal-remove:hover {
             background: #ff5252;
         }
 
         /* I LIKE SECTION - BELOW DAYS */
-        .i-like-section {
+        . i-like-section {
             background: white;
             border-radius: 15px;
             padding: 20px;
@@ -203,9 +203,9 @@
         .i-like-count {
             background: #667eea;
             color: white;
-            padding:  3px 10px;
-            border-radius:  15px;
-            font-size:  0.8em;
+            padding:   3px 10px;
+            border-radius:   15px;
+            font-size:   0.8em;
         }
 
         #iLikeBox {
@@ -220,7 +220,7 @@
             }
         }
 
-        .meal-card {
+        . meal-card {
             background: #f8f9fa;
             border-radius: 10px;
             padding: 10px;
@@ -236,24 +236,24 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .meal-card: active {
+        .meal-card:  active {
             cursor: grabbing;
         }
 
-        .meal-card. dragging {
+        .meal-card.  dragging {
             opacity: 0.5;
             transform: rotate(3deg);
         }
 
-        . meal-card-image {
+        .  meal-card-image {
             width: 100%;
             height: 120px;
             border-radius: 8px;
-            object-fit:  cover;
+            object-fit:   cover;
             margin-bottom: 10px;
         }
 
-        .meal-card-name {
+        . meal-card-name {
             font-weight: 600;
             color: #333;
             margin-bottom: 5px;
@@ -262,19 +262,19 @@
             min-height: 35px;
         }
 
-        . meal-card-source {
+        .  meal-card-source {
             font-size: 0.7em;
             color: #666;
             background: #e0e0e0;
             padding: 2px 6px;
-            border-radius: 8px;
+            border-radius:  8px;
             display: inline-block;
             margin-bottom: 8px;
         }
 
-        . meal-card-btn {
+        .  meal-card-btn {
             width: 100%;
-            padding:  6px 10px;
+            padding:   6px 10px;
             border: none;
             border-radius: 5px;
             font-size: 0.75em;
@@ -296,12 +296,12 @@
             left: 0;
             top: 0;
             width: 100%;
-            height:  100%;
-            background: rgba(0, 0, 0, 0.7);
+            height:   100%;
+            background:  rgba(0, 0, 0, 0.7);
             overflow-y: auto;
         }
 
-        .modal. show {
+        .modal.  show {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -314,8 +314,8 @@
             max-width: 800px;
             width: 100%;
             max-height: 90vh;
-            overflow-y:  auto;
-            box-shadow:  0 10px 50px rgba(0,0,0,0.5);
+            overflow-y:   auto;
+            box-shadow:   0 10px 50px rgba(0,0,0,0.5);
             animation: slideDown 0.3s ease-out;
         }
 
@@ -341,7 +341,7 @@
         .modal-title {
             font-size: 1.8em;
             color: #667eea;
-            margin:  0;
+            margin:   0;
         }
 
         .modal-close {
@@ -367,22 +367,22 @@
         .modal-image {
             width: 100%;
             max-height: 300px;
-            object-fit: cover;
+            object-fit:  cover;
             border-radius: 10px;
             margin-bottom: 20px;
         }
 
-        . modal-source {
+        .  modal-source {
             display: inline-block;
             padding: 5px 15px;
             background: #667eea;
             color: white;
             border-radius: 20px;
-            font-size:  0.9em;
-            margin-bottom: 15px;
+            font-size:   0.9em;
+            margin-bottom:  15px;
         }
 
-        .modal-description {
+        . modal-description {
             color: #666;
             font-style: italic;
             margin-bottom: 20px;
@@ -393,13 +393,13 @@
             margin-bottom: 25px;
         }
 
-        . modal-section h3 {
+        .  modal-section h3 {
             color: #667eea;
             margin-bottom: 10px;
-            font-size:  1.3em;
+            font-size:   1.3em;
         }
 
-        . modal-section p {
+        .  modal-section p {
             color: #555;
             line-height: 1.8;
             white-space: pre-wrap;
@@ -412,7 +412,7 @@
             padding: 40px;
         }
 
-        . spinner-loading {
+        .  spinner-loading {
             border: 4px solid rgba(255,255,255,0.3);
             border-top: 4px solid white;
             border-radius: 50%;
@@ -423,11 +423,11 @@
         }
 
         @keyframes spin {
-            0% { transform:  rotate(0deg); }
+            0% { transform:   rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
 
-        . empty-state {
+        .  empty-state {
             text-align: center;
             color: #999;
             padding: 30px;
@@ -435,13 +435,13 @@
             grid-column: 1 / -1;
         }
 
-        . error-message {
+        .  error-message {
             background: #f8d7da;
             color: #721c24;
-            padding: 20px;
-            border-radius:  10px;
+            padding:  20px;
+            border-radius:   10px;
             text-align: center;
-            margin:  20px 0;
+            margin:   20px 0;
         }
 
         .config-prompt {
@@ -464,7 +464,7 @@
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 1em;
-            margin:  10px 0;
+            margin:   10px 0;
         }
 
         .config-input:focus {
@@ -481,7 +481,7 @@
             font-size: 1em;
             font-weight: 600;
             cursor: pointer;
-            transition:  opacity 0.3s;
+            transition:   opacity 0.3s;
         }
 
         .btn-primary:hover {
@@ -495,7 +495,7 @@
     <div class="container">
         <header>
             <h1>📅 Weekly Meal Planner</h1>
-            <p class="subtitle">Plan your week with delicious meals! </p>
+            <p class="subtitle">Plan your week with delicious meals!  </p>
         </header>
 
         <div id="loadingSection" class="loading">
@@ -506,7 +506,7 @@
         <div id="configSection" class="config-prompt" style="display: none;">
             <h2>⚙️ Configuration Required</h2>
             <p>Please enter your Google Apps Script Web App URL:</p>
-            <input type="text" id="webAppUrlInput" class="config-input" placeholder="https://script.google.com/macros/s/... ">
+            <input type="text" id="webAppUrlInput" class="config-input" placeholder="https://script.google.com/macros/s/...  ">
             <button class="btn-primary" onclick="saveConfigAndLoad()">Save & Load Planner</button>
         </div>
 
@@ -584,7 +584,7 @@
                 </h2>
                 <div id="iLikeBox">
                     <div class="empty-state">
-                        No meals yet!  Add meals from the spinner or meal database.
+                        No meals yet!   Add meals from the spinner or meal database.
                     </div>
                 </div>
             </div>
@@ -600,7 +600,7 @@
                 <button class="modal-close" onclick="closeModal()">&times;</button>
             </div>
             <div class="modal-body">
-                <img id="modalImage" class="modal-image" style="display:  none;">
+                <img id="modalImage" class="modal-image" style="display:   none;">
                 <span class="modal-source" id="modalSource"></span>
                 <p class="modal-description" id="modalDescription"></p>
                 <div class="modal-section">
@@ -664,7 +664,7 @@
 
         async function loadPlanner() {
             try {
-                const response = await fetch(WEB_APP_URL + '? action=getPlanner');
+                const response = await fetch(WEB_APP_URL + '?action=getPlanner');
                 const data = await response.json();
                 
                 console.log('Planner data loaded:', data);
@@ -710,13 +710,13 @@
             
             // Render "I Like" box - only show meals that are NOT assigned to any day
             const likedMeals = plannerData. filter(m => 
-                m.status === 'liked' && !assignedMealIds.includes(m.mealId)
+                m.status === 'liked' && !assignedMealIds.includes(m. mealId)
             );
             
             const iLikeBox = document.getElementById('iLikeBox');
             
             if (likedMeals.length === 0) {
-                iLikeBox.innerHTML = '<div class="empty-state">No meals yet! Add meals from the spinner or meal database.</div>';
+                iLikeBox.innerHTML = '<div class="empty-state">No meals yet!  Add meals from the spinner or meal database.</div>';
             } else {
                 iLikeBox.innerHTML = likedMeals.map(meal => `
                     <div class="meal-card" draggable="true" data-meal-id="${meal.mealId}" onmousedown="prepareDrag(${meal.mealId})">
@@ -736,11 +736,11 @@
                 });
             }
             
-            document.getElementById('iLikeCount').textContent = likedMeals. length;
+            document.getElementById('iLikeCount').textContent = likedMeals.length;
 
             // Render weekly calendar
             days.forEach(day => {
-                const dayMeals = plannerData.filter(m => m.assignedDay === day && m.status === 'assigned');
+                const dayMeals = plannerData. filter(m => m.assignedDay === day && m.status === 'assigned');
                 const dayContainer = document.getElementById(day);
                 
                 if (dayMeals.length === 0) {
@@ -750,7 +750,7 @@
                         <div class="day-meal" draggable="true" data-meal-id="${meal.mealId}" data-from-day="${day}" onclick="showRecipe(${meal.mealId})">
                             <div class="day-meal-name">${meal.mealName}</div>
                             <div class="day-meal-source">${meal.source}</div>
-                            <button class="day-meal-remove" onclick="event.stopPropagation(); removeMealFromDay(${meal.mealId}, '${day}')">
+                            <button class="day-meal-remove" onclick="event.stopPropagation(); removeMealFromDay(${meal. mealId}, '${day}')">
                                 ← Back to I Like
                             </button>
                         </div>
@@ -804,7 +804,7 @@
         }
 
         // Close modal when clicking outside
-        window.onclick = function(event) {
+        window. onclick = function(event) {
             const modal = document.getElementById('recipeModal');
             if (event.target === modal) {
                 closeModal();
@@ -895,17 +895,17 @@
                 console.log('Successfully assigned! ');
                 await loadPlanner();
             } else {
-                alert('Failed to assign meal: ' + result.message);
+                alert('Failed to assign meal:  ' + result.message);
             }
 
             draggedMealId = null;
             draggedFromDay = null;
         }
 
-        // API calls
+        // API calls - NO SPACES AFTER ? 
         async function assignMealToDayAPI(mealId, day) {
             try {
-                console.log('API call:  assignMealToDay', mealId, day);
+                console.log('API call: assignMealToDay', mealId, day);
                 const url = `${WEB_APP_URL}?action=assignMealToDay&mealId=${mealId}&day=${encodeURIComponent(day)}`;
                 
                 console.log('Calling URL:', url);
