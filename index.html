@@ -355,20 +355,21 @@
             showStatus(statusId, `⏳ Fetching meals from ${sourceName}...`, 'info');
 
             try {
-                const response = await fetch(WEB_APP_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ action: action })
+                // Use GET request which works better with Apps Script CORS
+                const url = `${WEB_APP_URL}?action=${action}`;
+                const response = await fetch(url, {
+                    method: 'GET',
+                    redirect: 'follow'
                 });
-
-                // Wait for scraping to complete (varies by source)
-                const waitTime = action === 'scrapeMealDB' ? 5000 : 15000;
-                await new Promise(resolve => setTimeout(resolve, waitTime));
                 
-                showStatus(statusId, '✅ Scraping completed! Check your Google Sheet.', 'success');
+                const result = await response.json();
+                
+                if (result.success) {
+                    showStatus(statusId, '✅ ' + result.message, 'success');
+                } else {
+                    showStatus(statusId, '❌ ' + result.message, 'error');
+                }
+                
                 loadMealCount();
 
             } catch (error) {
