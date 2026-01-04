@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background:   linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background:  linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -60,17 +60,17 @@
             background: white;
             border-radius: 15px;
             padding: 20px;
-            box-shadow:  0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             margin-bottom: 20px;
         }
 
         . weekly-calendar h2 {
             color: #667eea;
             margin-bottom: 20px;
-            text-align:  center;
+            text-align: center;
         }
 
-        . days-grid {
+        .days-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 15px;
@@ -122,16 +122,16 @@
             background: #667eea;
             color: white;
             padding: 2px 8px;
-            border-radius:  10px;
+            border-radius: 10px;
             font-size:  0.75em;
         }
 
-        . day-meal {
+        .day-meal {
             background: white;
             border-radius: 8px;
             padding: 10px;
-            margin-bottom: 8px;
-            box-shadow:  0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom:  8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             border-left: 4px solid #667eea;
             transition: transform 0.2s, box-shadow 0.2s;
         }
@@ -190,7 +190,7 @@
             background: white;
             border-radius: 15px;
             padding: 20px;
-            box-shadow:  0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         .i-like-section h2 {
@@ -207,7 +207,7 @@
             color: white;
             padding: 3px 10px;
             border-radius:  15px;
-            font-size:  0.8em;
+            font-size: 0.8em;
         }
 
         #iLikeBox {
@@ -268,7 +268,7 @@
             color: #666;
             background: #e0e0e0;
             padding: 2px 6px;
-            border-radius: 8px;
+            border-radius:  8px;
             display: inline-block;
             margin-bottom: 8px;
         }
@@ -328,7 +328,7 @@
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform:  translateY(0);
             }
         }
 
@@ -343,11 +343,11 @@
         .modal-title {
             font-size: 1.8em;
             color: #667eea;
-            margin: 0;
+            margin:  0;
         }
 
-        . modal-close {
-            background:  none;
+        .modal-close {
+            background: none;
             border: none;
             font-size: 2em;
             cursor: pointer;
@@ -369,8 +369,8 @@
         .modal-image {
             width: 100%;
             max-height: 300px;
-            object-fit: cover;
-            border-radius: 10px;
+            object-fit:  cover;
+            border-radius:  10px;
             margin-bottom: 20px;
         }
 
@@ -384,7 +384,7 @@
             margin-bottom: 15px;
         }
 
-        .modal-description {
+        . modal-description {
             color: #666;
             font-style: italic;
             margin-bottom: 20px;
@@ -398,7 +398,7 @@
         . modal-section h3 {
             color: #667eea;
             margin-bottom: 10px;
-            font-size: 1.3em;
+            font-size:  1.3em;
         }
 
         . modal-section p {
@@ -429,7 +429,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        . empty-state {
+        .empty-state {
             text-align: center;
             color: #999;
             padding: 30px;
@@ -443,7 +443,7 @@
             padding: 20px;
             border-radius:  10px;
             text-align: center;
-            margin: 20px 0;
+            margin:  20px 0;
         }
 
         .config-prompt {
@@ -486,7 +486,7 @@
             transition:  opacity 0.3s;
         }
 
-        .btn-primary:hover {
+        . btn-primary:hover {
             opacity: 0.9;
         }
     </style>
@@ -497,7 +497,7 @@
     <div class="container">
         <header>
             <h1>📅 Weekly Meal Planner</h1>
-            <p class="subtitle">Plan your week with delicious meals! </p>
+            <p class="subtitle">Plan your week with delicious meals!</p>
         </header>
 
         <div id="loadingSection" class="loading">
@@ -661,6 +661,7 @@
                 if (data.meals) {
                     allMealsData = data.meals;
                     console.log('All meals loaded:', allMealsData. length);
+                    console.log('First meal:', allMealsData[0]);
                 }
             } catch (error) {
                 console.error('Failed to load all meals:', error);
@@ -705,6 +706,7 @@
 
         function renderPlanner() {
             console.log('Rendering planner with data:', plannerData);
+            console.log('All meals available:', allMealsData.length);
             
             const assignedMealIds = plannerData
                 .filter(m => m.status === 'assigned')
@@ -748,7 +750,7 @@
                 if (dayMeals.length === 0) {
                     dayContainer.innerHTML = '<div class="empty-state" style="font-size: 0.85em; padding: 20px;">Drag meals here</div>';
                 } else {
-                    dayContainer.innerHTML = dayMeals.map(meal => `
+                    dayContainer. innerHTML = dayMeals.map(meal => `
                         <div class="day-meal" draggable="true" data-meal-id="${meal.mealId}" data-from-day="${day}">
                             <div class="day-meal-name" data-meal-id="${meal.mealId}">${meal.mealName}</div>
                             <div class="day-meal-source">${meal.source}</div>
@@ -767,6 +769,8 @@
                         nameEl. addEventListener('click', function(e) {
                             e. stopPropagation();
                             const mealId = this.getAttribute('data-meal-id');
+                            console.log('Meal name clicked!  MealId:', mealId);
+                            console.log('All meals count:', allMealsData.length);
                             showRecipe(parseInt(mealId));
                         });
                     });
@@ -783,15 +787,27 @@
         }
 
         function handleCardClick(event, mealId) {
+            console.log('Card clicked!  MealId:', mealId, 'isDragging:', isDragging);
             if (! isDragging) {
                 showRecipe(mealId);
             }
         }
 
         function showRecipe(mealId) {
-            const meal = allMealsData.find(m => m.id == mealId);
-            if (!meal) {
-                alert('Recipe not found! ');
+            console.log('showRecipe called with mealId:', mealId);
+            console.log('Type of mealId:', typeof mealId);
+            console.log('allMealsData:', allMealsData);
+            console.log('Looking for meal with id:', mealId);
+            
+            const meal = allMealsData.find(m => {
+                console.log('Comparing:', m.id, '(type:', typeof m.id, ') with', mealId, '(type:', typeof mealId, ')');
+                return m. id == mealId;
+            });
+            
+            console.log('Found meal:', meal);
+            
+            if (! meal) {
+                alert('Recipe not found!  MealId: ' + mealId + ', Total meals: ' + allMealsData.length);
                 return;
             }
 
@@ -818,7 +834,7 @@
 
         window.onclick = function(event) {
             const modal = document.getElementById('recipeModal');
-            if (event.target === modal) {
+            if (event. target === modal) {
                 closeModal();
             }
         }
@@ -833,7 +849,7 @@
 
         function dragStart(event) {
             isDragging = true;
-            const mealId = event.currentTarget.getAttribute('data-meal-id');
+            const mealId = event.currentTarget. getAttribute('data-meal-id');
             draggedMealId = mealId;
             draggedFromDay = null;
             
@@ -912,7 +928,7 @@
                 console.log('Successfully assigned! ');
                 await loadData();
             } else {
-                alert('Failed to assign meal:  ' + result.message);
+                alert('Failed to assign meal: ' + result.message);
             }
 
             draggedMealId = null;
@@ -944,7 +960,7 @@
             
             const result = await removeMealFromDayAPI(mealId, day);
             
-            if (result.success) {
+            if (result. success) {
                 await loadData();
             } else {
                 alert('Failed to remove meal: ' + result.message);
