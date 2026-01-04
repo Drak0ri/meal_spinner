@@ -31,8 +31,8 @@
 
         h1 {
             font-size: 3em;
-            margin-bottom:  10px;
-            text-shadow:  2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .back-btn {
@@ -109,7 +109,7 @@
         }
 
         .day-slot-header {
-            font-weight: 600;
+            font-weight:  600;
             color: #667eea;
             margin-bottom: 10px;
             font-size: 1.1em;
@@ -122,21 +122,21 @@
             background: #667eea;
             color: white;
             padding: 2px 8px;
-            border-radius: 10px;
+            border-radius:  10px;
             font-size:  0.75em;
         }
 
-        .day-meal {
+        . day-meal {
             background: white;
             border-radius: 8px;
             padding: 10px;
             margin-bottom:  8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow:  0 2px 5px rgba(0,0,0,0.1);
             border-left: 4px solid #667eea;
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        . day-meal:hover {
+        .day-meal:hover {
             box-shadow: 0 4px 10px rgba(0,0,0,0.15);
             transform: translateX(3px);
         }
@@ -190,7 +190,7 @@
             background: white;
             border-radius: 15px;
             padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow:  0 10px 30px rgba(0,0,0,0.2);
         }
 
         .i-like-section h2 {
@@ -205,7 +205,7 @@
         .i-like-count {
             background: #667eea;
             color: white;
-            padding: 3px 10px;
+            padding:  3px 10px;
             border-radius:  15px;
             font-size:  0.8em;
         }
@@ -249,8 +249,8 @@
             width: 100%;
             height: 120px;
             border-radius: 8px;
-            object-fit:  cover;
-            margin-bottom:  10px;
+            object-fit: cover;
+            margin-bottom: 10px;
             pointer-events: none;
         }
 
@@ -303,7 +303,7 @@
             overflow-y: auto;
         }
 
-        .modal.show {
+        .modal. show {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -316,7 +316,7 @@
             max-width: 800px;
             width: 100%;
             max-height: 90vh;
-            overflow-y:  auto;
+            overflow-y: auto;
             box-shadow: 0 10px 50px rgba(0,0,0,0.5);
             animation: slideDown 0.3s ease-out;
         }
@@ -343,7 +343,7 @@
         .modal-title {
             font-size: 1.8em;
             color: #667eea;
-            margin: 0;
+            margin:  0;
         }
 
         .modal-close {
@@ -398,7 +398,7 @@
         . modal-section h3 {
             color: #667eea;
             margin-bottom: 10px;
-            font-size:  1.3em;
+            font-size: 1.3em;
         }
 
         . modal-section p {
@@ -414,7 +414,7 @@
             padding: 40px;
         }
 
-        .spinner-loading {
+        . spinner-loading {
             border: 4px solid rgba(255,255,255,0.3);
             border-top: 4px solid white;
             border-radius: 50%;
@@ -425,7 +425,7 @@
         }
 
         @keyframes spin {
-            0% { transform:  rotate(0deg); }
+            0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
 
@@ -599,7 +599,7 @@
                 <button class="modal-close" onclick="closeModal()">&times;</button>
             </div>
             <div class="modal-body">
-                <img id="modalImage" class="modal-image" style="display: none;">
+                <img id="modalImage" class="modal-image" style="display:  none;">
                 <span class="modal-source" id="modalSource"></span>
                 <p class="modal-description" id="modalDescription"></p>
                 <div class="modal-section">
@@ -625,7 +625,7 @@
         const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
         window.onload = function() {
-            if (! WEB_APP_URL) {
+            if (!WEB_APP_URL) {
                 document.getElementById('loadingSection').style.display = 'none';
                 document.getElementById('configSection').style.display = 'block';
             } else {
@@ -656,7 +656,7 @@
 
         async function loadAllMeals() {
             try {
-                const response = await fetch(WEB_APP_URL + '?action=getMeals');
+                const response = await fetch(WEB_APP_URL + '? action=getMeals');
                 const data = await response.json();
                 if (data.meals) {
                     allMealsData = data.meals;
@@ -670,7 +670,7 @@
 
         async function loadPlanner() {
             try {
-                const response = await fetch(WEB_APP_URL + '?action=getPlanner');
+                const response = await fetch(WEB_APP_URL + '? action=getPlanner');
                 const data = await response.json();
                 
                 console.log('Planner data loaded:', data);
@@ -683,7 +683,7 @@
                     
                     renderPlanner();
                 } else {
-                    showError('Failed to load planner:  ' + data.message);
+                    showError('Failed to load planner: ' + data.message);
                 }
             } catch (error) {
                 showError('Failed to load planner:  ' + error.message);
@@ -807,7 +807,7 @@
             console.log('Found meal:', meal);
             
             if (! meal) {
-                alert('Recipe not found! MealId: ' + mealId + ', Total meals: ' + allMealsData.length);
+                alert('Recipe not found!  MealId: ' + mealId + ', Total meals: ' + allMealsData.length);
                 return;
             }
 
@@ -834,7 +834,7 @@
 
         window.onclick = function(event) {
             const modal = document.getElementById('recipeModal');
-            if (event. target === modal) {
+            if (event.target === modal) {
                 closeModal();
             }
         }
@@ -902,7 +902,7 @@
         async function drop(event) {
             event. preventDefault();
             
-            const daySlot = event.currentTarget;
+            const daySlot = event. currentTarget;
             if (daySlot.classList.contains('day-slot')) {
                 daySlot.classList.remove('drag-over');
             }
@@ -960,7 +960,7 @@
             
             const result = await removeMealFromDayAPI(mealId, day);
             
-            if (result.success) {
+            if (result. success) {
                 await loadData();
             } else {
                 alert('Failed to remove meal: ' + result.message);
@@ -987,7 +987,7 @@
             if (!confirm('Remove this meal from your planner completely?')) return;
             
             try {
-                const url = `${WEB_APP_URL}?action=removeMealFromPlanner&mealId=${mealId}`;
+                const url = `${WEB_APP_URL}? action=removeMealFromPlanner&mealId=${mealId}`;
                 
                 console.log('Removing completely URL:', url);
                 
