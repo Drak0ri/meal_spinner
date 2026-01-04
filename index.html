@@ -6,14 +6,14 @@
     <title>Meal Spinner - Dashboard</title>
     <style>
         * {
-            margin: 0;
+            margin:  0;
             padding: 0;
-            box-sizing: border-box;
+            box-sizing:  border-box;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background:  linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background:   linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -32,7 +32,7 @@
 
         h1 {
             font-size: 3em;
-            margin-bottom:  10px;
+            margin-bottom:   10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
@@ -52,34 +52,34 @@
             background: white;
             border-radius: 15px;
             padding: 30px;
-            box-shadow:  0 10px 30px rgba(0,0,0,0.2);
+            box-shadow:   0 10px 30px rgba(0,0,0,0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         . card:hover {
-            transform:  translateY(-5px);
+            transform:   translateY(-5px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
         .card h2 {
             color: #667eea;
             margin-bottom: 15px;
-            font-size:  1.5em;
+            font-size:   1.5em;
         }
 
         .card p {
             color: #666;
             margin-bottom: 20px;
-            line-height:  1.6;
+            line-height: 1.6;
         }
 
-        .btn {
+        . btn {
             display: inline-block;
             padding: 12px 25px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
+            color:  white;
+            text-decoration:  none;
+            border-radius:  8px;
             border: none;
             cursor: pointer;
             font-size: 1em;
@@ -87,10 +87,11 @@
             transition: opacity 0.3s ease, transform 0.2s ease;
             width: 100%;
             margin-top: 10px;
+            text-align: center;
         }
 
-        . btn:hover {
-            opacity:  0.9;
+        .btn:hover {
+            opacity:   0.9;
             transform: scale(1.02);
         }
 
@@ -119,21 +120,21 @@
 
         .status.success {
             background: #d4edda;
-            color:  #155724;
-            border:  1px solid #c3e6cb;
+            color:   #155724;
+            border:   1px solid #c3e6cb;
             display: block;
         }
 
         .status.error {
             background: #f8d7da;
-            color: #721c24;
+            color:  #721c24;
             border: 1px solid #f5c6cb;
-            display: block;
+            display:  block;
         }
 
-        .status.info {
+        . status.info {
             background: #d1ecf1;
-            color: #0c5460;
+            color:  #0c5460;
             border: 1px solid #bee5eb;
             display: block;
         }
@@ -146,9 +147,9 @@
             display: inline-block;
             padding: 5px 10px;
             background: #4CAF50;
-            color:  white;
-            border-radius:  5px;
-            font-size:  0.8em;
+            color:   white;
+            border-radius:   5px;
+            font-size:   0.8em;
             font-weight: bold;
             margin-left: 10px;
         }
@@ -163,24 +164,24 @@
             border-radius: 15px;
             padding: 30px;
             margin-bottom:  20px;
-            box-shadow:  0 10px 30px rgba(0,0,0,0.2);
+            box-shadow:   0 10px 30px rgba(0,0,0,0.2);
         }
 
         .config-section h3 {
             color: #667eea;
-            margin-bottom: 15px;
+            margin-bottom:  15px;
         }
 
         .config-input {
             width: 100%;
-            padding:  10px;
+            padding:   10px;
             border: 2px solid #e0e0e0;
-            border-radius: 8px;
+            border-radius:  8px;
             font-size: 1em;
-            margin-bottom:  10px;
+            margin-bottom:   10px;
         }
 
-        . config-input:focus {
+        . config-input: focus {
             outline: none;
             border-color: #667eea;
         }
@@ -238,7 +239,7 @@
         <div class="dashboard">
             <div class="card">
                 <h2>🌐 MealDB API <span class="badge">ACTIVE</span></h2>
-                <p>Scrape 10 random healthy meals from the MealDB database.  Each click fetches unique meals. </p>
+                <p>Scrape 10 random healthy meals from the MealDB database.   Each click fetches unique meals. </p>
                 <button class="btn" onclick="scrapeMeals('scrapeMealDB')" id="btnMealDB">
                     Scrape 10 Meals (MealDB)
                 </button>
@@ -274,17 +275,17 @@
 
         <!-- Features -->
         <div class="dashboard">
-            <div class="card coming-soon">
-                <h2>🎡 Meal Spinner <span class="badge soon">SOON</span></h2>
-                <p>Spin the wheel to randomly select from your meal database. Visual and fun way to decide what to cook!</p>
-                <button class="btn secondary" disabled>
+            <div class="card">
+                <h2>🎡 Meal Spinner <span class="badge">ACTIVE</span></h2>
+                <p>Spin the wheel to randomly select from your meal database.  Visual and fun way to decide what to cook!</p>
+                <a href="spinner.html" class="btn">
                     Launch Spinner
-                </button>
+                </a>
             </div>
 
             <div class="card coming-soon">
                 <h2>📅 Weekly Meal Planner <span class="badge soon">SOON</span></h2>
-                <p>Plan your weekly meals by selecting from your database. Drag and drop meals to specific days. </p>
+                <p>Plan your weekly meals by selecting from your database.  Drag and drop meals to specific days.</p>
                 <button class="btn secondary" disabled>
                     Open Planner
                 </button>
@@ -300,7 +301,7 @@
         </div>
 
         <div class="meal-count" id="mealCount">
-            Database:  Loading...
+            Database:   Loading...
         </div>
     </div>
 
@@ -367,7 +368,7 @@
                 const waitTime = action === 'scrapeMealDB' ? 5000 : 15000;
                 await new Promise(resolve => setTimeout(resolve, waitTime));
                 
-                showStatus(statusId, '✅ Scraping completed!  Check your Google Sheet.', 'success');
+                showStatus(statusId, '✅ Scraping completed!   Check your Google Sheet. ', 'success');
                 loadMealCount();
 
             } catch (error) {
@@ -397,7 +398,7 @@
         // Helper function to get source name
         function getSourceName(action) {
             if (action === 'scrapeMealDB') return 'MealDB';
-            if (action === 'scrapeICA') return 'ICA.se';
+            if (action === 'scrapeICA') return 'ICA. se';
             if (action === 'scrapeHemkop') return 'Hemköp';
             return 'source';
         }
@@ -408,9 +409,9 @@
 
             try {
                 const response = await fetch(WEB_APP_URL + '?action=getMeals');
-                const data = await response.json();
+                const data = await response. json();
                 
-                const count = data.meals ?  data.meals.length : 0;
+                const count = data.meals ? data.meals.length : 0;
                 document.getElementById('mealCount').innerHTML = 
                     `📊 Database: <strong>${count} meals</strong>`;
             } catch (error) {
