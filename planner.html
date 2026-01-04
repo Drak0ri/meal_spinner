@@ -670,7 +670,7 @@
 
         async function loadPlanner() {
             try {
-                const response = await fetch(WEB_APP_URL + '? action=getPlanner');
+                const response = await fetch(WEB_APP_URL + '?action=getPlanner');
                 const data = await response.json();
                 
                 console.log('Planner data loaded:', data);
@@ -987,7 +987,7 @@
             if (!confirm('Remove this meal from your planner completely?')) return;
             
             try {
-                const url = `${WEB_APP_URL}? action=removeMealFromPlanner&mealId=${mealId}`;
+                const url = `${WEB_APP_URL}?action=removeMealFromPlanner&mealId=${mealId}`;
                 
                 console.log('Removing completely URL:', url);
                 
